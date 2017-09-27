@@ -1,24 +1,311 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13122.16" systemVersion="17A277" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13196" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="gSk-5R-NXd">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13104.12"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13173"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
+    <customFonts key="customFonts">
+        <array key="Futura.ttc">
+            <string>Futura-Medium</string>
+        </array>
+    </customFonts>
     <scenes>
-        <!--View Controller-->
+        <!--Home-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="HomeViewController" customModule="iOS_Secret_Master" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="551"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="BuB-c7-QUV">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="551"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zaS-1j-t2w">
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="275.5"/>
+                                        <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="25"/>
+                                        <state key="normal" title="THE GAME">
+                                            <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="gameButtonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="vZX-8p-ZN3"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eU5-GP-5k5">
+                                        <rect key="frame" x="0.0" y="275.5" width="375" height="275.5"/>
+                                        <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="25"/>
+                                        <state key="normal" title="NOSTALGIA">
+                                            <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="scoreButtonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="3OA-yd-jNe"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                            </stackView>
+                        </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="BuB-c7-QUV" secondAttribute="bottom" id="NDt-JR-GDm"/>
+                            <constraint firstItem="BuB-c7-QUV" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="q1F-xv-dO1"/>
+                            <constraint firstItem="BuB-c7-QUV" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="r7S-9E-gKV"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="BuB-c7-QUV" secondAttribute="trailing" id="srm-5Z-04M"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
+                    <navigationItem key="navigationItem" title="Home" id="2eu-TU-uCv"/>
+                    <connections>
+                        <outlet property="gameButtonOutlet" destination="zaS-1j-t2w" id="alr-Lb-xeu"/>
+                        <outlet property="scoreButtonOutlet" destination="eU5-GP-5k5" id="BWz-Dn-a52"/>
+                        <segue destination="dZv-FK-7rq" kind="show" identifier="toScoresSegue" id="gPO-4d-Tz2"/>
+                        <segue destination="zDV-5Y-M2E" kind="show" identifier="toGameSegue" id="lWL-Ig-2LI"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="703" y="120"/>
+        </scene>
+        <!--The Game-->
+        <scene sceneID="v2n-mE-Rlt">
+            <objects>
+                <viewController title="The Game" id="zDV-5Y-M2E" customClass="GameViewController" customModule="iOS_Secret_Master" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="JWg-4Y-22s">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="551"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="bnZ-hV-GqX">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="551"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mVF-qe-ljK">
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="183.5"/>
+                                        <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="26"/>
+                                        <state key="normal" title="IDENTIFY YOURSELF">
+                                            <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="identifyButtonPressed:" destination="zDV-5Y-M2E" eventType="touchUpInside" id="d5w-fG-3FQ"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jaK-bk-rox">
+                                        <rect key="frame" x="0.0" y="183.5" width="375" height="184"/>
+                                        <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="27"/>
+                                        <state key="normal" title="JOIN GAME">
+                                            <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="joinButtonPressed:" destination="zDV-5Y-M2E" eventType="touchUpInside" id="rbh-pO-n2H"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="T52-XH-lJU">
+                                        <rect key="frame" x="0.0" y="367.5" width="375" height="183.5"/>
+                                        <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="27"/>
+                                        <state key="normal" title="CREATE GAME">
+                                            <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="createButtonPressed:" destination="zDV-5Y-M2E" eventType="touchUpInside" id="jXI-eB-EF2"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                            </stackView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="Z0M-wQ-iuq" firstAttribute="bottom" secondItem="bnZ-hV-GqX" secondAttribute="bottom" id="7ae-nI-HhQ"/>
+                            <constraint firstItem="Z0M-wQ-iuq" firstAttribute="trailing" secondItem="bnZ-hV-GqX" secondAttribute="trailing" id="PGC-Mx-tQF"/>
+                            <constraint firstItem="bnZ-hV-GqX" firstAttribute="leading" secondItem="Z0M-wQ-iuq" secondAttribute="leading" id="QGV-2W-mBk"/>
+                            <constraint firstItem="bnZ-hV-GqX" firstAttribute="top" secondItem="Z0M-wQ-iuq" secondAttribute="top" id="Vv2-og-qBx"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="Z0M-wQ-iuq"/>
+                    </view>
+                    <connections>
+                        <outlet property="identifyButtonOutlet" destination="mVF-qe-ljK" id="jsE-KX-VgP"/>
+                        <segue destination="Kp5-DN-10a" kind="show" identifier="toIdentifySegue" id="BDb-gZ-IRF"/>
+                        <segue destination="1uw-Kj-eZp" kind="show" identifier="toGameSetupSegue" id="KkK-NH-FYX"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="i32-O6-iDo" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1876" y="-516"/>
+        </scene>
+        <!--Building Game-->
+        <scene sceneID="vGj-Vr-0q2">
+            <objects>
+                <viewController title="Building Game" id="1uw-Kj-eZp" customClass="SetupGameViewController" customModule="iOS_Secret_Master" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="eRM-rk-o96">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="551"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="1VL-zZ-naw">
+                                <rect key="frame" x="20" y="117" width="335" height="318"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="playerCell" textLabel="cDQ-Vx-YVa" style="IBUITableViewCellStyleDefault" id="4ek-mu-wYC">
+                                        <rect key="frame" x="0.0" y="28" width="335" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="4ek-mu-wYC" id="Fef-jG-PH3">
+                                            <rect key="frame" x="0.0" y="0.0" width="335" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="cDQ-Vx-YVa">
+                                                    <rect key="frame" x="15" y="0.0" width="305" height="43.5"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
+                                <sections/>
+                            </tableView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Your Name:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KbA-0M-L5q">
+                                <rect key="frame" x="20" y="40" width="335" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="You Are Admin?" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="su4-rt-AXw">
+                                <rect key="frame" x="20" y="76" width="335" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yGk-Jm-vvF">
+                                <rect key="frame" x="0.0" y="481" width="375" height="70"/>
+                                <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="70" id="N93-Qn-99A"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="20"/>
+                                <state key="normal" title="START GAME">
+                                    <color key="titleColor" red="0.99048223350253806" green="0.99048223350253806" blue="0.99048223350253806" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="5ze-H7-3KS" firstAttribute="trailing" secondItem="yGk-Jm-vvF" secondAttribute="trailing" id="98O-k3-gAb"/>
+                            <constraint firstItem="1VL-zZ-naw" firstAttribute="leading" secondItem="5ze-H7-3KS" secondAttribute="leading" constant="20" id="BTH-r0-5rE"/>
+                            <constraint firstItem="5ze-H7-3KS" firstAttribute="trailing" secondItem="KbA-0M-L5q" secondAttribute="trailing" constant="20" id="CX7-tT-a17"/>
+                            <constraint firstItem="1VL-zZ-naw" firstAttribute="top" secondItem="su4-rt-AXw" secondAttribute="bottom" constant="20" id="DOM-aZ-ybY"/>
+                            <constraint firstItem="su4-rt-AXw" firstAttribute="top" secondItem="KbA-0M-L5q" secondAttribute="bottom" constant="15" id="Fh6-dm-Dhy"/>
+                            <constraint firstItem="yGk-Jm-vvF" firstAttribute="top" secondItem="1VL-zZ-naw" secondAttribute="bottom" constant="46" id="GsM-2L-mSE"/>
+                            <constraint firstItem="5ze-H7-3KS" firstAttribute="trailing" secondItem="1VL-zZ-naw" secondAttribute="trailing" constant="20" id="HqJ-69-4hx"/>
+                            <constraint firstItem="KbA-0M-L5q" firstAttribute="top" secondItem="5ze-H7-3KS" secondAttribute="top" constant="40" id="Jor-UD-JBy"/>
+                            <constraint firstItem="KbA-0M-L5q" firstAttribute="leading" secondItem="5ze-H7-3KS" secondAttribute="leading" constant="20" id="PvL-11-hsm"/>
+                            <constraint firstItem="yGk-Jm-vvF" firstAttribute="leading" secondItem="5ze-H7-3KS" secondAttribute="leading" id="ePH-Ms-DTq"/>
+                            <constraint firstItem="yGk-Jm-vvF" firstAttribute="bottom" secondItem="5ze-H7-3KS" secondAttribute="bottom" id="ikt-OH-Mv2"/>
+                            <constraint firstItem="5ze-H7-3KS" firstAttribute="trailing" secondItem="su4-rt-AXw" secondAttribute="trailing" constant="20" id="rRu-kx-yIi"/>
+                            <constraint firstItem="su4-rt-AXw" firstAttribute="leading" secondItem="5ze-H7-3KS" secondAttribute="leading" constant="20" id="twp-XS-aEo"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="5ze-H7-3KS"/>
+                    </view>
+                    <connections>
+                        <outlet property="currentPlayersTableView" destination="1VL-zZ-naw" id="twi-HP-luL"/>
+                        <outlet property="isAdminLabel" destination="su4-rt-AXw" id="gZb-ny-RzZ"/>
+                        <outlet property="yourNameLabel" destination="KbA-0M-L5q" id="0De-5o-bvF"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="RRs-wJ-TU4" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3128.8000000000002" y="-132.68365817091455"/>
+        </scene>
+        <!--Identify Yourself-->
+        <scene sceneID="ybF-xe-UAv">
+            <objects>
+                <viewController title="Identify Yourself" id="Kp5-DN-10a" customClass="IdentifyYourselfViewController" customModule="iOS_Secret_Master" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="e27-UR-yGp">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="551"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EW8-qa-zpo">
+                                <rect key="frame" x="168.5" y="111" width="37" height="30"/>
+                                <state key="normal" title="SAVE"/>
+                                <connections>
+                                    <action selector="saveButtonPressed:" destination="Kp5-DN-10a" eventType="touchUpInside" id="OHV-hl-tcY"/>
+                                </connections>
+                            </button>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter Name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="dvD-lZ-Olm">
+                                <rect key="frame" x="87.5" y="40" width="200" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="200" id="zJP-z3-fzu"/>
+                                </constraints>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="EW8-qa-zpo" firstAttribute="centerX" secondItem="e27-UR-yGp" secondAttribute="centerX" id="51m-fY-SoF"/>
+                            <constraint firstItem="dvD-lZ-Olm" firstAttribute="top" secondItem="VG8-G1-11d" secondAttribute="top" constant="40" id="gOv-ux-7Xl"/>
+                            <constraint firstItem="EW8-qa-zpo" firstAttribute="top" secondItem="dvD-lZ-Olm" secondAttribute="bottom" constant="41" id="iru-2t-YHM"/>
+                            <constraint firstItem="dvD-lZ-Olm" firstAttribute="centerX" secondItem="e27-UR-yGp" secondAttribute="centerX" id="rsU-fN-a9X"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="VG8-G1-11d"/>
+                    </view>
+                    <connections>
+                        <outlet property="nameField" destination="dvD-lZ-Olm" id="4Ay-qZ-nWQ"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Ncf-7y-q4r" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3130" y="-950"/>
+        </scene>
+        <!--Scores-->
+        <scene sceneID="ula-KD-THD">
+            <objects>
+                <tableViewController id="dZv-FK-7rq" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="epl-NL-PJd">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="551"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="WCw-5o-Mal">
+                                <rect key="frame" x="0.0" y="28" width="375" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="WCw-5o-Mal" id="9O3-bI-hLi">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="dZv-FK-7rq" id="fH3-rC-0Jz"/>
+                            <outlet property="delegate" destination="dZv-FK-7rq" id="4Cb-ry-hOn"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="Scores" id="LPB-Ai-ORm"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ONc-rT-yLS" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1876" y="641"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="v8d-mV-pZT">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="gSk-5R-NXd" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" barStyle="black" translucent="NO"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" barStyle="black" translucent="NO" largeTitles="YES" id="HDa-ZZ-vij">
+                        <rect key="frame" x="0.0" y="20" width="375" height="96"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="W1s-7p-6WQ"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ehS-hO-YrR" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-270" y="120"/>
         </scene>
     </scenes>
 </document>
