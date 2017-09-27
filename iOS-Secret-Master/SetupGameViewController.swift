@@ -25,10 +25,12 @@ class SetupGameViewController: UIViewController, UITableViewDelegate, UITableVie
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        
+        return (players?.count)!
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        <#code#>
+        let newCell = currentPlayersTableView.dequeueReusableCell(withIdentifier: "playerCell")
+        newCell?.textLabel?.text = players?[indexPath.row]
+        return newCell!
     }
 }
