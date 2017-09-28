@@ -19,7 +19,6 @@ class GameViewController: UIViewController{
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.setupSockets()
         socket.connect()
     }
     
@@ -65,27 +64,15 @@ class GameViewController: UIViewController{
     /* Sockets */
     /***********/
     
-    func setupSockets(){
-        
-    }
-    
     func getReadyToJoin(destination: SetupGameViewController){
         if !self.myName.isEmpty {
             
         }
         socket.emit("joinChat", self.myName)
-        socket.on("newUser") {result, ack in
-            let formatted = result as! NSArray
-            self.updatePlayers(destination: destination, players: formatted[0] as! NSArray)
-        }
         socket.on("allUsers") {result, ack in
             let formatted = result as! NSArray
             self.updatePlayers(destination: destination, players: formatted[0] as! NSArray)
         }
-        
-    }
-    
-    func getReadyToCreate(destination: SetupGameViewController){
         
     }
     

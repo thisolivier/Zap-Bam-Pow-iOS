@@ -19,17 +19,7 @@ class FakeGameViewController: UIViewController{
     override func viewDidLoad() {
         super.viewDidLoad()
         print("We're in the fake game")
-        if let curr = currentPlayerName {
-            currentPlayerName = curr
-            print(curr)
-        }
-        eventListner()
         socket.connect()
-    }
-    
-    func eventListner()  {
-        
-
     }
     
     @IBAction func shootPressed(_ sender: UIButton) {

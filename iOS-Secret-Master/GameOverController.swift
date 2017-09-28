@@ -16,7 +16,6 @@ class GameOverController: UIViewController{
     var game:Any?
     override func viewDidLoad() {
         super.viewDidLoad()
-        print("In game over controller: \(game)")
         fetchDataFrom("http://localhost:8000/all")
         socket.connect()
     }
@@ -30,7 +29,6 @@ class GameOverController: UIViewController{
                 do {
                     if let jsonResults = try JSONSerialization.jsonObject(with: data!, options: JSONSerialization.ReadingOptions.mutableContainers) as? NSDictionary {
                         print(jsonResults)
-                        
                     }
                 } catch {
                     print(error)

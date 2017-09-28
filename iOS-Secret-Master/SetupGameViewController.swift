@@ -28,9 +28,28 @@ class SetupGameViewController: UIViewController, UITableViewDelegate, UITableVie
             players = ["Olivier", "Lantz", "Wura"]
         }
         eventHandlers()
+        getAdmin("http://localhost:8000/admin")
         socket.connect()
     }
-
+    
+    func getAdmin(_ inputURL: String) {
+        let url = URL(string: inputURL)
+        let session = URLSession.shared
+        if let request = url {
+            let task = session.dataTask(with: request, completionHandler:  {
+                data, response, error in
+                do {
+                    if let jsonResults = try JSONSerialization.jsonObject(with: data!, options: JSONSerialization.ReadingOptions.mutableContainers) as? NSDictionary {
+                        print(jsonResults)
+                    }
+                } catch {
+                    print(error)
+                }
+            })
+            task.resume()
+        }
+    }
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return (players?.count)!
     }
@@ -38,10 +57,6 @@ class SetupGameViewController: UIViewController, UITableViewDelegate, UITableVie
     func eventHandlers() {
         socket.on("beginGame") {result, ack in
             print("Coming from the game creator \(result)")
-            self.performSegue(withIdentifier: "toFakeGameSegue", sender: nil)
-        }
-        socket.on("playGame") {result, ack in
-            print("Coming from the others \(result)")
             self.performSegue(withIdentifier: "toFakeGameSegue", sender: nil)
         }
         socket.on("gameOver") {result, ark in
@@ -57,7 +72,6 @@ class SetupGameViewController: UIViewController, UITableViewDelegate, UITableVie
     
     @IBAction func startGameButtonPressed(_ sender: Any) {
         socket.emit("startGame")
-        
     }
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "toFakeGameSegue" {
