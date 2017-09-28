@@ -49,9 +49,8 @@ class IdentifyYourselfViewController: UIViewController, ARSCNViewDelegate {
     /* Save the name */
     /*****************/
     @IBAction func savePressed(_ sender: Any) {
-        print("Save button pressed")
         if let myName = nameLabelOutput.text{
-            print("Hello?")
+            print("Saving new name of \(myName)")
             delegate?.myName = myName
             self.navigationController?.popViewController(animated: true)
         }
