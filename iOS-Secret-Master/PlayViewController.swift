@@ -100,7 +100,7 @@ class PlayViewController: UIViewController, ARSKViewDelegate {
     }
     
     /********************************/
-    /* Targetting    */
+    /* Targeting    */
     /********************************/
     
     // Defines a square region in center of screen and detects whether QR code is located within it
