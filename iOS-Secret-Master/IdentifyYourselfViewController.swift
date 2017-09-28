@@ -30,28 +30,15 @@ class IdentifyYourselfViewController: UIViewController, AVCaptureMetadataOutputO
     
     func prepareForVideoCapture(){
         let videoDevices = AVCaptureDevice.DiscoverySession.init(deviceTypes: [AVCaptureDevice.DeviceType.builtInWideAngleCamera, AVCaptureDevice.DeviceType.builtInDualCamera], mediaType: AVMediaType.video, position: AVCaptureDevice.Position.front)
-        var captureDevice:AVCaptureDevice?
-        for device in videoDevices.devices{
-            let device = device as AVCaptureDevice
-            if device.position == AVCaptureDevice.Position.front {
-                captureDevice = device
-                break
-            }
-        }
+        let captureDevice = videoDevices.devices[0]
+        
         do {
-            // Get an instance of the AVCaptureDeviceInput class using the previous device object.
-            let input = try AVCaptureDeviceInput(device: captureDevice!)
-            
-            // Initialize the captureSession object.
+            let input = try AVCaptureDeviceInput(device: captureDevice)
             captureSession = AVCaptureSession()
-            
-            // Set the input device on the capture session.
             captureSession?.addInput(input)
-            
         } catch {
-            // If any error occurs, simply print it out and don't continue any more.
+            print("We were unable to make an AVCaptureDevice using the front camera")
             print(error)
-            return
         }
     }
     
@@ -60,8 +47,4 @@ class IdentifyYourselfViewController: UIViewController, AVCaptureMetadataOutputO
         let newName = "Fake Name"
         delegate?.setNewName(newName)
     }
-    
-    
-    
-
 }
