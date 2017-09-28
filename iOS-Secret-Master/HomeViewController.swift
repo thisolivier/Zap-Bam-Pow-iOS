@@ -27,6 +27,9 @@ class HomeViewController: UIViewController {
     @IBAction func scoreButtonPressed(_ sender: UIButton) {
         performSegue(withIdentifier: "toScoresSegue", sender: nil)
     }
+    @IBAction func playButtonPressed(_ sender: UIButton) {
+        performSegue(withIdentifier: "toPlaySegue", sender: nil)
+    }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
