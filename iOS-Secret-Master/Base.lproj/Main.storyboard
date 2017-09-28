@@ -227,43 +227,42 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="551"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5Cb-6a-ybI" customClass="CameraFrameView" customModule="iOS_Secret_Master" customModuleProvider="target">
-                                <rect key="frame" x="67" y="54" width="240" height="240"/>
-                                <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" priority="600" constant="240" id="77t-EK-ZLc"/>
-                                    <constraint firstAttribute="width" secondItem="5Cb-6a-ybI" secondAttribute="height" multiplier="1:1" id="uid-65-tLx"/>
-                                </constraints>
-                            </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Placeholder" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rYv-Kb-F89">
-                                <rect key="frame" x="20" y="314" width="335" height="21"/>
+                                <rect key="frame" x="20" y="316" width="335" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EW8-qa-zpo">
-                                <rect key="frame" x="169" y="365" width="37" height="30"/>
+                                <rect key="frame" x="169" y="367" width="37" height="30"/>
                                 <state key="normal" title="SAVE"/>
                                 <connections>
                                     <action selector="saveButtonPressed:" destination="Kp5-DN-10a" eventType="touchUpInside" id="OHV-hl-tcY"/>
                                 </connections>
                             </button>
+                            <arskView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8UF-Z0-sva">
+                                <rect key="frame" x="59" y="40" width="256" height="256"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="8UF-Z0-sva" secondAttribute="height" multiplier="1:1" id="Rf8-aK-gzy"/>
+                                    <constraint firstAttribute="width" priority="750" constant="240" id="efF-n6-zkP"/>
+                                </constraints>
+                            </arskView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="5Cb-6a-ybI" firstAttribute="centerX" secondItem="e27-UR-yGp" secondAttribute="centerX" id="10i-Bx-NFp"/>
                             <constraint firstItem="EW8-qa-zpo" firstAttribute="top" secondItem="rYv-Kb-F89" secondAttribute="bottom" constant="30" id="4lZ-C1-2BO"/>
                             <constraint firstItem="EW8-qa-zpo" firstAttribute="centerX" secondItem="e27-UR-yGp" secondAttribute="centerX" id="51m-fY-SoF"/>
-                            <constraint firstItem="rYv-Kb-F89" firstAttribute="top" secondItem="5Cb-6a-ybI" secondAttribute="bottom" constant="20" id="EO1-RB-v7v"/>
+                            <constraint firstItem="8UF-Z0-sva" firstAttribute="top" secondItem="VG8-G1-11d" secondAttribute="top" constant="40" id="5ae-1f-ELz"/>
+                            <constraint firstItem="VG8-G1-11d" firstAttribute="trailing" relation="lessThanOrEqual" secondItem="8UF-Z0-sva" secondAttribute="trailing" constant="60" id="ACV-Nd-a8F"/>
+                            <constraint firstItem="8UF-Z0-sva" firstAttribute="centerX" secondItem="e27-UR-yGp" secondAttribute="centerX" id="ES7-i8-qbZ"/>
                             <constraint firstItem="rYv-Kb-F89" firstAttribute="leading" secondItem="VG8-G1-11d" secondAttribute="leading" constant="20" id="fAp-jR-mfH"/>
                             <constraint firstItem="VG8-G1-11d" firstAttribute="trailing" secondItem="rYv-Kb-F89" secondAttribute="trailing" constant="20" id="mNc-vo-7mH"/>
-                            <constraint firstItem="5Cb-6a-ybI" firstAttribute="top" secondItem="VG8-G1-11d" secondAttribute="top" constant="54" id="wWR-jL-Pah"/>
-                            <constraint firstItem="VG8-G1-11d" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="5Cb-6a-ybI" secondAttribute="trailing" constant="68" id="xvW-2d-pj4"/>
+                            <constraint firstItem="rYv-Kb-F89" firstAttribute="top" secondItem="8UF-Z0-sva" secondAttribute="bottom" constant="20" id="sT7-rf-JHv"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="VG8-G1-11d"/>
                     </view>
                     <connections>
-                        <outlet property="cameraDisplayView" destination="5Cb-6a-ybI" id="Cbu-16-Tam"/>
+                        <outlet property="cameraARView" destination="8UF-Z0-sva" id="JXW-EF-DJO"/>
                         <outlet property="nameLabelOutput" destination="rYv-Kb-F89" id="Gr7-yG-S0g"/>
                     </connections>
                 </viewController>
