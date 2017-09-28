@@ -24,6 +24,9 @@
 		539787891F7D22F10018E2EE /* GameOverController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 539787881F7D22F10018E2EE /* GameOverController.swift */; };
 		853F3C9BE00FB43340473432 /* Pods_iOS_Secret_MasterTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AD093BC90B301DDCA6B6BBC9 /* Pods_iOS_Secret_MasterTests.framework */; };
 		D6802D921892D64FEAB61D7F /* Pods_iOS_Secret_Master.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 09030251AA0E58FB6A85571E /* Pods_iOS_Secret_Master.framework */; };
+		BF3128511F7D7CFF00B626EC /* PlayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF3128501F7D7CFF00B626EC /* PlayViewController.swift */; };
+		BF3128531F7D820700B626EC /* PlayScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF3128521F7D820700B626EC /* PlayScene.swift */; };
+		BF3128551F7D826C00B626EC /* Arena.sks in Resources */ = {isa = PBXBuildFile; fileRef = BF3128541F7D826C00B626EC /* Arena.sks */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -73,6 +76,9 @@
 		AD093BC90B301DDCA6B6BBC9 /* Pods_iOS_Secret_MasterTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_iOS_Secret_MasterTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E5B33C0DBF08D7AE78F4D925 /* Pods-iOS-Secret-Master.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iOS-Secret-Master.release.xcconfig"; path = "Pods/Target Support Files/Pods-iOS-Secret-Master/Pods-iOS-Secret-Master.release.xcconfig"; sourceTree = "<group>"; };
 		EF5671C028BB0301B4DE653D /* Pods-iOS-Secret-MasterTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iOS-Secret-MasterTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-iOS-Secret-MasterTests/Pods-iOS-Secret-MasterTests.release.xcconfig"; sourceTree = "<group>"; };
+		BF3128501F7D7CFF00B626EC /* PlayViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayViewController.swift; sourceTree = "<group>"; };
+		BF3128521F7D820700B626EC /* PlayScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayScene.swift; sourceTree = "<group>"; };
+		BF3128541F7D826C00B626EC /* Arena.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Arena.sks; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -136,11 +142,14 @@
 				531B6D881F7C89C80053F751 /* FakeGameViewController.swift */,
 				539787881F7D22F10018E2EE /* GameOverController.swift */,
 				092F42011F7C55200054067E /* SetupGameViewController.swift */,
+				BF3128521F7D820700B626EC /* PlayScene.swift */,
+				BF3128501F7D7CFF00B626EC /* PlayViewController.swift */,
 				09FAB3161F7C276C0057EF1B /* Main.storyboard */,
 				09FAB31C1F7C276C0057EF1B /* Assets.xcassets */,
 				09FAB31E1F7C276C0057EF1B /* LaunchScreen.storyboard */,
 				09FAB3211F7C276C0057EF1B /* Info.plist */,
 				09FAB3191F7C276C0057EF1B /* iOS_Secret_Master.xcdatamodeld */,
+				BF3128541F7D826C00B626EC /* Arena.sks */,
 			);
 			path = "iOS-Secret-Master";
 			sourceTree = "<group>";
@@ -305,6 +314,7 @@
 				09FAB3201F7C276C0057EF1B /* LaunchScreen.storyboard in Resources */,
 				09FAB31D1F7C276C0057EF1B /* Assets.xcassets in Resources */,
 				09FAB3181F7C276C0057EF1B /* Main.storyboard in Resources */,
+				BF3128551F7D826C00B626EC /* Arena.sks in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -467,6 +477,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BF3128511F7D7CFF00B626EC /* PlayViewController.swift in Sources */,
+				BF3128531F7D820700B626EC /* PlayScene.swift in Sources */,
 				09FAB3461F7C46390057EF1B /* GameViewController.swift in Sources */,
 				09C44F5F1F7C4A5900CB3CA2 /* IdentifyYourselfViewController.swift in Sources */,
 				09FAB3441F7C30D70057EF1B /* Structs.swift in Sources */,
