@@ -12,23 +12,35 @@ import UIKit
 import Vision
 import ARKit
 
-class IdentifyYourselfViewController: UIViewController, ARSKViewDelegate {
+class IdentifyYourselfViewController: UIViewController, ARSCNViewDelegate {
     /******************/
     /* Initialization */
     /******************/
+    let configuration = ARWorldTrackingConfiguration()
     var delegate:GameViewController?
     var qRRequest:VNDetectBarcodesRequest?
     var qRTimer = Timer()
     
-    @IBOutlet weak var cameraARView: ARSKView!
+    @IBOutlet weak var cameraARView: ARSCNView!
     @IBOutlet weak var nameLabelOutput: UILabel!
+    @IBOutlet weak var resetButtonOutlet: UIButton!
+    @IBOutlet weak var manualResetButtonOutlet: UIButton!
+    
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        resetButtonOutlet.isHidden = true
         cameraARView.delegate = self
-        if let realDelegate = delegate {
-            if realDelegate.myName != "NaName" {
-                nameLabelOutput.text = realDelegate.myName
+        setupVisionRequest()
+        scheduledTimerWithTimeInterval()
+        
+        // See if we have a name already
+        if let delegate = delegate {
+            if delegate.myName != "NaName" {
+                nameLabelOutput.text = delegate.myName
+            } else {
+                nameLabelOutput.isHidden = true
             }
         }
     }
@@ -36,8 +48,20 @@ class IdentifyYourselfViewController: UIViewController, ARSKViewDelegate {
     /*****************/
     /* Save the name */
     /*****************/
-    @IBAction func saveButtonPressed(_ sender: UIButton) {
+    @IBAction func savePressed(_ sender: Any) {
         print("Save button pressed")
+        if let myName = nameLabelOutput.text{
+            print("Hello?")
+            delegate?.myName = myName
+            self.navigationController?.popViewController(animated: true)
+        }
+    }
+    
+    /*************************/
+    /* Manual entry fallback */
+    /*************************/
+    @IBAction func manualEntryPressed(_ sender: UIButton) {
+        // Lance help here
     }
     
     /************************/
@@ -53,11 +77,12 @@ class IdentifyYourselfViewController: UIViewController, ARSKViewDelegate {
                 // Cast the result to a barcode-observation
                 if let barcode = result as? VNBarcodeObservation {
                     // Get the bounding box for the bar code and find the center
-                    var rect = barcode.boundingBox
-                    rect = rect.applying(CGAffineTransform(scaleX: 1, y: -1))
-                    rect = rect.applying(CGAffineTransform(translationX: 0, y: 1))
-                    let center = CGPoint(x: rect.midX, y: rect.midY)
-                    print ("Payload: \(barcode.payloadStringValue!) at \(center)")
+                    print ("QRCode detected: \(barcode.payloadStringValue!)")
+                    self.cameraARView.session.pause()
+                    self.qRTimer.invalidate()
+                    self.nameLabelOutput.text = barcode.payloadStringValue!
+                    self.nameLabelOutput.isHidden = false
+                    self.resetButtonOutlet.isHidden = false
                 }
             }
         })
@@ -76,6 +101,29 @@ class IdentifyYourselfViewController: UIViewController, ARSKViewDelegate {
     // Starts a timer with a callback of the QR detection function. Repeats every 1 seconds.
     func scheduledTimerWithTimeInterval(){
         qRTimer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(self.detectQR), userInfo: nil, repeats: true)
+    }
+    
+    // Restarts the QR scanner
+    @IBAction func rescanPressed(_ sender: UIButton) {
+        cameraARView.session.run(configuration)
+        scheduledTimerWithTimeInterval()
+        resetButtonOutlet.isHidden = true
+    }
+    
+    /********************************/
+    /* Fulfilling scene delegate    */
+    /********************************/
+    /* We don't use any of this yet */
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        cameraARView.session.run(configuration)
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        cameraARView.session.pause()
+        nameLabelOutput.isHidden = true
     }
 }
 

@@ -227,43 +227,80 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="551"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <arscnView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lEQ-GQ-dE9">
+                                <rect key="frame" x="60" y="40" width="255" height="255"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" priority="750" constant="240" id="aSo-Td-QFy"/>
+                                    <constraint firstAttribute="width" secondItem="lEQ-GQ-dE9" secondAttribute="height" multiplier="1:1" id="gQ1-ts-MeA"/>
+                                </constraints>
+                            </arscnView>
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" barStyle="black" translatesAutoresizingMaskIntoConstraints="NO" id="lEi-u5-Qal">
+                                <rect key="frame" x="0.0" y="507" width="375" height="44"/>
+                                <items>
+                                    <barButtonItem title="Save" id="FVn-V1-y7Y">
+                                        <connections>
+                                            <action selector="savePressed:" destination="Kp5-DN-10a" id="pny-7q-P2w"/>
+                                        </connections>
+                                    </barButtonItem>
+                                </items>
+                                <color key="tintColor" red="0.99048223349999998" green="0.99048223349999998" blue="0.99048223349999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="barTintColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </toolbar>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bhB-mw-QYv">
+                                <rect key="frame" x="60" y="295" width="255" height="35"/>
+                                <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="17"/>
+                                <state key="normal" title="MANUAL ENTRY">
+                                    <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="manualEntryPressed:" destination="Kp5-DN-10a" eventType="touchUpInside" id="AWW-Lu-37Y"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6K1-Jd-U1D">
+                                <rect key="frame" x="60" y="330" width="255" height="35"/>
+                                <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="17"/>
+                                <state key="normal" title="RESCAN">
+                                    <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="rescanPressed:" destination="Kp5-DN-10a" eventType="touchUpInside" id="HbR-Yo-RcW"/>
+                                </connections>
+                            </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Placeholder" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rYv-Kb-F89">
-                                <rect key="frame" x="20" y="316" width="335" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <rect key="frame" x="20" y="375" width="335" height="34"/>
+                                <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="26"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EW8-qa-zpo">
-                                <rect key="frame" x="169" y="367" width="37" height="30"/>
-                                <state key="normal" title="SAVE"/>
-                                <connections>
-                                    <action selector="saveButtonPressed:" destination="Kp5-DN-10a" eventType="touchUpInside" id="OHV-hl-tcY"/>
-                                </connections>
-                            </button>
-                            <arskView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8UF-Z0-sva">
-                                <rect key="frame" x="59" y="40" width="256" height="256"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" secondItem="8UF-Z0-sva" secondAttribute="height" multiplier="1:1" id="Rf8-aK-gzy"/>
-                                    <constraint firstAttribute="width" priority="750" constant="240" id="efF-n6-zkP"/>
-                                </constraints>
-                            </arskView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="EW8-qa-zpo" firstAttribute="top" secondItem="rYv-Kb-F89" secondAttribute="bottom" constant="30" id="4lZ-C1-2BO"/>
-                            <constraint firstItem="EW8-qa-zpo" firstAttribute="centerX" secondItem="e27-UR-yGp" secondAttribute="centerX" id="51m-fY-SoF"/>
-                            <constraint firstItem="8UF-Z0-sva" firstAttribute="top" secondItem="VG8-G1-11d" secondAttribute="top" constant="40" id="5ae-1f-ELz"/>
-                            <constraint firstItem="VG8-G1-11d" firstAttribute="trailing" relation="lessThanOrEqual" secondItem="8UF-Z0-sva" secondAttribute="trailing" constant="60" id="ACV-Nd-a8F"/>
-                            <constraint firstItem="8UF-Z0-sva" firstAttribute="centerX" secondItem="e27-UR-yGp" secondAttribute="centerX" id="ES7-i8-qbZ"/>
+                            <constraint firstItem="lEi-u5-Qal" firstAttribute="top" relation="greaterThanOrEqual" secondItem="rYv-Kb-F89" secondAttribute="bottom" id="G4a-bS-NRa"/>
+                            <constraint firstItem="rYv-Kb-F89" firstAttribute="top" secondItem="6K1-Jd-U1D" secondAttribute="bottom" priority="750" constant="41" id="Psd-py-Yfb"/>
+                            <constraint firstItem="bhB-mw-QYv" firstAttribute="centerX" secondItem="e27-UR-yGp" secondAttribute="centerX" id="Vwc-60-85P"/>
+                            <constraint firstItem="bhB-mw-QYv" firstAttribute="top" secondItem="lEQ-GQ-dE9" secondAttribute="bottom" id="btk-TT-NMw"/>
+                            <constraint firstItem="6K1-Jd-U1D" firstAttribute="top" secondItem="bhB-mw-QYv" secondAttribute="bottom" id="f5t-3H-ggN"/>
                             <constraint firstItem="rYv-Kb-F89" firstAttribute="leading" secondItem="VG8-G1-11d" secondAttribute="leading" constant="20" id="fAp-jR-mfH"/>
+                            <constraint firstItem="6K1-Jd-U1D" firstAttribute="width" secondItem="lEQ-GQ-dE9" secondAttribute="width" id="jXA-ap-xey"/>
+                            <constraint firstItem="6K1-Jd-U1D" firstAttribute="centerX" secondItem="e27-UR-yGp" secondAttribute="centerX" id="l2F-R3-dJh"/>
+                            <constraint firstItem="VG8-G1-11d" firstAttribute="trailing" relation="lessThanOrEqual" secondItem="lEQ-GQ-dE9" secondAttribute="trailing" constant="60" id="lrP-xz-NZF"/>
+                            <constraint firstItem="lEi-u5-Qal" firstAttribute="leading" secondItem="VG8-G1-11d" secondAttribute="leading" id="mGr-qe-6Xh"/>
                             <constraint firstItem="VG8-G1-11d" firstAttribute="trailing" secondItem="rYv-Kb-F89" secondAttribute="trailing" constant="20" id="mNc-vo-7mH"/>
-                            <constraint firstItem="rYv-Kb-F89" firstAttribute="top" secondItem="8UF-Z0-sva" secondAttribute="bottom" constant="20" id="sT7-rf-JHv"/>
+                            <constraint firstItem="rYv-Kb-F89" firstAttribute="top" relation="lessThanOrEqual" secondItem="6K1-Jd-U1D" secondAttribute="bottom" constant="10" id="q2w-f7-mjc"/>
+                            <constraint firstAttribute="trailing" secondItem="lEi-u5-Qal" secondAttribute="trailing" id="qPM-ZD-oeY"/>
+                            <constraint firstItem="lEQ-GQ-dE9" firstAttribute="top" secondItem="VG8-G1-11d" secondAttribute="top" constant="40" id="qfj-nu-94d"/>
+                            <constraint firstItem="bhB-mw-QYv" firstAttribute="width" secondItem="lEQ-GQ-dE9" secondAttribute="width" id="rfM-sI-omb"/>
+                            <constraint firstAttribute="bottom" secondItem="lEi-u5-Qal" secondAttribute="bottom" id="rfT-Ez-0wF"/>
+                            <constraint firstItem="lEQ-GQ-dE9" firstAttribute="centerX" secondItem="e27-UR-yGp" secondAttribute="centerX" id="usi-rK-4Mc"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="VG8-G1-11d"/>
                     </view>
+                    <navigationItem key="navigationItem" title="Title" id="GRa-Oz-JXc"/>
                     <connections>
-                        <outlet property="cameraARView" destination="8UF-Z0-sva" id="JXW-EF-DJO"/>
+                        <outlet property="cameraARView" destination="lEQ-GQ-dE9" id="XLy-4O-PNy"/>
+                        <outlet property="manualResetButtonOutlet" destination="bhB-mw-QYv" id="L1X-LO-3E0"/>
                         <outlet property="nameLabelOutput" destination="rYv-Kb-F89" id="Gr7-yG-S0g"/>
+                        <outlet property="resetButtonOutlet" destination="6K1-Jd-U1D" id="qhy-LX-oHE"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ncf-7y-q4r" userLabel="First Responder" sceneMemberID="firstResponder"/>
