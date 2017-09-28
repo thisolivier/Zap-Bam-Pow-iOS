@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Bucket
+   type = "1"
+   version = "2.0">
+   <Breakpoints>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "iOS-Secret-Master/IdentifyYourselfViewController.swift"
+            timestampString = "528328069.00983"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "5"
+            endingLineNumber = "5"
+            landmarkName = "unknown"
+            landmarkType = "0">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "iOS_Secret_Master.IdentifyYourselfViewController.__deallocating_deinit"
+                  moduleName = "iOS-Secret-Master"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/olivier/Sites/iOS-Secret-Master/iOS-Secret-Master/IdentifyYourselfViewController.swift"
+                  timestampString = "528241465.328779"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "0"
+                  endingLineNumber = "0"
+                  offsetFromSymbolStart = "16">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "iOS_Secret_Master.IdentifyYourselfViewController.__allocating_init(nibName: Swift.Optional&lt;Swift.String&gt;, bundle: Swift.Optional&lt;__ObjC.Bundle&gt;) -&gt; iOS_Secret_Master.IdentifyYourselfViewController"
+                  moduleName = "iOS-Secret-Master"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/olivier/Sites/iOS-Secret-Master/iOS-Secret-Master/IdentifyYourselfViewController.swift"
+                  timestampString = "528241465.332068"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "0"
+                  endingLineNumber = "0"
+                  offsetFromSymbolStart = "16">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "iOS_Secret_Master.IdentifyYourselfViewController.init(nibName: Swift.Optional&lt;Swift.String&gt;, bundle: Swift.Optional&lt;__ObjC.Bundle&gt;) -&gt; iOS_Secret_Master.IdentifyYourselfViewController"
+                  moduleName = "iOS-Secret-Master"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/olivier/Sites/iOS-Secret-Master/iOS-Secret-Master/IdentifyYourselfViewController.swift"
+                  timestampString = "528241465.335149"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "14"
+                  endingLineNumber = "14"
+                  offsetFromSymbolStart = "72">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "iOS_Secret_Master.IdentifyYourselfViewController.__allocating_init(coder: __ObjC.NSCoder) -&gt; Swift.Optional&lt;iOS_Secret_Master.IdentifyYourselfViewController&gt;"
+                  moduleName = "iOS-Secret-Master"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/olivier/Sites/iOS-Secret-Master/iOS-Secret-Master/IdentifyYourselfViewController.swift"
+                  timestampString = "528241465.337661"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "0"
+                  endingLineNumber = "0"
+                  offsetFromSymbolStart = "16">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "iOS_Secret_Master.IdentifyYourselfViewController.init(coder: __ObjC.NSCoder) -&gt; Swift.Optional&lt;iOS_Secret_Master.IdentifyYourselfViewController&gt;"
+                  moduleName = "iOS-Secret-Master"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/olivier/Sites/iOS-Secret-Master/iOS-Secret-Master/IdentifyYourselfViewController.swift"
+                  timestampString = "528241465.340583"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "14"
+                  endingLineNumber = "14"
+                  offsetFromSymbolStart = "48">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+   </Breakpoints>
+</Bucket>

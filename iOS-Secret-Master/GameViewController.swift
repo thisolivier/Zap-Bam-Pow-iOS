@@ -15,11 +15,18 @@ class GameViewController: UIViewController{
     /* Initialisation */
     /******************/
     var myName:String = "NaName"
+    let colours = Colours()
     @IBOutlet weak var identifyButtonOutlet: UIButton!
+    @IBOutlet weak var createGameButtonOutlet: UIButton!
+    @IBOutlet weak var joinGameButtonOutlet: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         socket.connect()
+        identifyButtonOutlet.backgroundColor = colours.UIOrange
+        joinGameButtonOutlet.backgroundColor = colours.UITeal
+        createGameButtonOutlet.backgroundColor = colours.UIDarkTeal
+        self.setupSockets()
     }
     
     /******************/
