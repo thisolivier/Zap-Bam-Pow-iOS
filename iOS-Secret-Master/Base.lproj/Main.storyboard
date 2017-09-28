@@ -186,6 +186,9 @@
                                 <state key="normal" title="START GAME">
                                     <color key="titleColor" red="0.99048223350253806" green="0.99048223350253806" blue="0.99048223350253806" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
+                                <connections>
+                                    <action selector="startGameButtonPressed:" destination="1uw-Kj-eZp" eventType="touchUpInside" id="fnJ-U8-tBY"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -210,11 +213,70 @@
                         <outlet property="currentPlayersTableView" destination="1VL-zZ-naw" id="twi-HP-luL"/>
                         <outlet property="isAdminLabel" destination="su4-rt-AXw" id="gZb-ny-RzZ"/>
                         <outlet property="yourNameLabel" destination="KbA-0M-L5q" id="0De-5o-bvF"/>
+                        <segue destination="nIO-8A-Ebd" kind="presentation" identifier="toFakeGameSegue" id="0pp-lb-mt1"/>
+                        <segue destination="KTL-7h-KST" kind="presentation" identifier="toGameOverSegue" id="u4U-bf-0LC"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="RRs-wJ-TU4" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3128.8000000000002" y="-132.68365817091455"/>
+            <point key="canvasLocation" x="3236" y="-152"/>
+        </scene>
+        <!--Fake Game View Controller-->
+        <scene sceneID="UY0-8l-0s9">
+            <objects>
+                <viewController id="nIO-8A-Ebd" customClass="FakeGameViewController" customModule="iOS_Secret_Master" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="3OO-BC-eS5">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9Uo-tG-sMz">
+                                <rect key="frame" x="94" y="318" width="166" height="63"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="1" green="0.70083726930000001" blue="0.12096059319999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="29"/>
+                                <state key="normal" title="shoot"/>
+                                <connections>
+                                    <action selector="shootPressed:" destination="nIO-8A-Ebd" eventType="touchUpInside" id="KXa-qJ-3aF"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8mC-n9-otg">
+                                <rect key="frame" x="150" y="187" width="74" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Game over"/>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <viewLayoutGuide key="safeArea" id="1Hd-QG-cD1"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="5Qe-9w-5VB" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4391" y="-179"/>
+        </scene>
+        <!--Game Over Controller-->
+        <scene sceneID="0Fk-N9-xXQ">
+            <objects>
+                <viewController id="KTL-7h-KST" customClass="GameOverController" customModule="iOS_Secret_Master" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="9Ks-lD-6Am">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Game Over" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pXQ-LL-GqN">
+                                <rect key="frame" x="106" y="254" width="163" height="158"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="0.093581651690000003" green="0.1098783832" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="25"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <viewLayoutGuide key="safeArea" id="9g3-cK-Aeb"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="kkw-Z5-TbZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4390" y="612"/>
         </scene>
         <!--Identify Yourself-->
         <scene sceneID="ybF-xe-UAv">
