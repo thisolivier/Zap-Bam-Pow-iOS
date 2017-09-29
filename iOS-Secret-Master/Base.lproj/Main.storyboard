@@ -391,7 +391,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <arskView contentMode="scaleToFill" sceneName="Arena.sks" translatesAutoresizingMaskIntoConstraints="NO" id="g3a-Cc-9KM">
+                            <arskView contentMode="scaleToFill" ambiguous="YES" sceneName="Arena.sks" translatesAutoresizingMaskIntoConstraints="NO" id="g3a-Cc-9KM">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                                 <gestureRecognizers/>
                                 <connections>
@@ -399,12 +399,9 @@
                                     <outletCollection property="gestureRecognizers" destination="MXM-hw-ROx" appends="YES" id="AJ9-hD-U0o"/>
                                 </connections>
                             </arskView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="TARGET LOCK" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="s6n-AY-Apk">
-                                <rect key="frame" x="102" y="539" width="171" height="53"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="175" id="3xi-j5-kIC"/>
-                                    <constraint firstAttribute="height" constant="53" id="ddT-fI-oQe"/>
-                                </constraints>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="TARGET LOCK" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="s6n-AY-Apk">
+                                <rect key="frame" x="102" y="539" width="159.5" height="53"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" name="AppleSDGothicNeo-Bold" family="Apple SD Gothic Neo" pointSize="25"/>
                                 <color key="textColor" red="0.0047458361057282072" green="1" blue="0.3978387366888454" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
@@ -423,14 +420,10 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="g3a-Cc-9KM" firstAttribute="top" secondItem="Fc2-NY-qwx" secondAttribute="top" id="54e-IR-qb0"/>
-                            <constraint firstItem="s6n-AY-Apk" firstAttribute="leading" secondItem="Zr7-CX-QJx" secondAttribute="leading" constant="102" id="9Fo-95-sLE"/>
-                            <constraint firstItem="s6n-AY-Apk" firstAttribute="centerX" secondItem="9Ea-L7-5t4" secondAttribute="centerX" id="HjM-2S-WLH"/>
                             <constraint firstItem="9Ea-L7-5t4" firstAttribute="top" secondItem="Zr7-CX-QJx" secondAttribute="top" constant="97" id="U33-eY-zI8"/>
                             <constraint firstItem="g3a-Cc-9KM" firstAttribute="bottom" secondItem="Zr7-CX-QJx" secondAttribute="bottom" id="eD7-St-WtN"/>
                             <constraint firstItem="9Ea-L7-5t4" firstAttribute="leading" secondItem="Zr7-CX-QJx" secondAttribute="leading" constant="155" id="fG8-kK-ZUE"/>
-                            <constraint firstItem="s6n-AY-Apk" firstAttribute="centerX" secondItem="g3a-Cc-9KM" secondAttribute="centerX" id="jze-Ag-Lid"/>
                             <constraint firstItem="g3a-Cc-9KM" firstAttribute="leading" secondItem="Fc2-NY-qwx" secondAttribute="leading" id="nIo-4z-Jhn"/>
-                            <constraint firstItem="Zr7-CX-QJx" firstAttribute="bottom" secondItem="s6n-AY-Apk" secondAttribute="bottom" constant="75" id="veR-LA-0Vp"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="Zr7-CX-QJx"/>
                     </view>

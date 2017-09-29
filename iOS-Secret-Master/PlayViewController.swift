@@ -24,7 +24,7 @@ class PlayViewController: UIViewController, ARSKViewDelegate {
     // Creates a new timer object
     var qRTimer = Timer()
     // Variable for storing the center of tracked QR codes
-    var qRCenter: [CGPoint]?
+    var qRCenterArray = [CGPoint]()
     // Variable to report whether tracked QR code is in the target area
     var qRInTarget = false
     
@@ -73,7 +73,7 @@ class PlayViewController: UIViewController, ARSKViewDelegate {
                     rect = rect.applying(CGAffineTransform(scaleX: 1, y: -1))
                     rect = rect.applying(CGAffineTransform(translationX: 0, y: 1))
                     let center = CGPoint(x: rect.midX, y: rect.midY)
-                    self.qRCenter.append(center)
+                    self.qRCenterArray.append(center)
                     print ("Payload: \(barcode.payloadStringValue!) at \(center)")
                     // Checks whether the tracked QR code is lined up in the crosshairs
                 }
@@ -103,7 +103,7 @@ class PlayViewController: UIViewController, ARSKViewDelegate {
     
     // Resets current data
     func resetQRData(){
-        qRCenter = nil
+        qRCenterArray = []
         qRInTarget = false
     }
     
@@ -113,21 +113,19 @@ class PlayViewController: UIViewController, ARSKViewDelegate {
     
     // Defines a square region in center of screen and detects whether QR code is located within it
     func isTargeted() {
-        if qRCenter == nil {
+        if qRCenterArray.count == 0 {
             qRInTarget = false
             targetingLabel.isHidden = true
-        }
-        if let realCenter = qRCenter{
-            if realCenter.x > 0.45
-                && realCenter.x < 0.55
-                && realCenter.y > 0.42
-                && realCenter.y < 0.57 {
-                targetingLabel.isHidden = false
-                qRInTarget = true
-                print("Target Lock")
-            } else {
-                targetingLabel.isHidden = true
-                qRInTarget = false
+        } else {
+            for coordinate in qRCenterArray {
+                if coordinate.x > 0.45
+                    && coordinate.x < 0.55
+                    && coordinate.y > 0.42
+                    && coordinate.y < 0.57 {
+                    targetingLabel.isHidden = false
+                    qRInTarget = true
+                    print("Target Lock")
+                }
             }
         }
     }
