@@ -11,6 +11,7 @@ import SpriteKit
 import ARKit
 import Vision
 import SocketIO
+import AVFoundation
 
 class PlayViewController: UIViewController, ARSKViewDelegate {
     /******************/
@@ -22,6 +23,7 @@ class PlayViewController: UIViewController, ARSKViewDelegate {
     @IBOutlet weak var casualtyLabel: UILabel!
     @IBOutlet weak var timeLowLabel: UILabel!
     
+    var player: AVAudioPlayer!
     let colours = Colours()
     
     // Variable for storing the barcode request
@@ -103,13 +105,13 @@ class PlayViewController: UIViewController, ARSKViewDelegate {
             casualtyLabel.text = "\(result) was just shot, ouch!"
         }
     }
+    /********************************/
+    /* Time Low Notifications       */
+    /********************************/
     // Handler for time low warning
     func timeWarning(result: Int) {
         if result == 60 {
             timeLowLabel.text = "TIME LOW"
-//            UIView.transition(with: self.timeLowLabel, duration: 3, options: .transitionCrossDissolve, animations: { [weak self] in
-//                self?.timeLowLabel.alpha = (arc4random() % 2 == 0) ? 1.0 : 0.0
-//                }, completion: nil)
             UIView.animate(withDuration: 5, animations: {
                         self.timeLowLabel.alpha = 1.0
             }, completion: {_ in
@@ -211,6 +213,7 @@ class PlayViewController: UIViewController, ARSKViewDelegate {
     @IBAction func didTapScreen(_ sender: UITapGestureRecognizer) {
         print("Screen tapped")
         self.detectQR()
+        self.playSoundEffect(ofType: .torpedo)
         if let victim = qRInTarget {
             flashHit(backgroundColor: colours.UIGray, start: 0, end: 6)
             print("\(victim.name) hit!")
@@ -264,10 +267,26 @@ class PlayViewController: UIViewController, ARSKViewDelegate {
             }
         }
     }
-    /********************************/
-    /* Time Low Notifications       */
-    /********************************/
+    // Sound Effects
     
+    func playSoundEffect(ofType effect: SoundEffect) {
+        
+        // Async to avoid substantial cost to graphics processing (may result in sound effect delay however)
+        DispatchQueue.main.async {
+            do
+            {
+                if let effectURL = Bundle.main.url(forResource: effect.rawValue, withExtension: "mp3") {
+                    
+                    self.player = try AVAudioPlayer(contentsOf: effectURL)
+                    self.player.play()
+                    
+                }
+            }
+            catch let error as NSError {
+                print(error.description)
+            }
+        }
+    }
     
     
     /********************************/
@@ -294,5 +313,11 @@ class PlayViewController: UIViewController, ARSKViewDelegate {
         // Shut down the tracking
         sceneView.session.pause()
         qRTimer.invalidate()
+    }
+    enum SoundEffect: String {
+        case explosion = "explosion"
+        case collision = "collision"
+        case torpedo = "torpedo"
+        case shoot1 = "shoot1"
     }
 }
