@@ -16,7 +16,7 @@ class SetupGameViewController: UIViewController, UITableViewDelegate, UITableVie
     var gameDestination: PlayViewController?
     var endGameDestination: GameOverController?
     var adminName: String?
-    var dummyTime = 70000
+    var dummyTime = 80000
     
     @IBOutlet weak var yourNameLabel: UILabel!
     @IBOutlet weak var currentPlayersTableView: UITableView!

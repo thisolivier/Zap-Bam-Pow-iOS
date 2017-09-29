@@ -12,6 +12,7 @@
     <customFonts key="customFonts">
         <array key="Futura.ttc">
             <string>Futura-Bold</string>
+            <string>Futura-CondensedExtraBold</string>
             <string>Futura-Medium</string>
         </array>
     </customFonts>
@@ -363,18 +364,18 @@
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="TARGET LOCK" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="s6n-AY-Apk">
                                         <rect key="frame" x="0.0" y="0.0" width="187.5" height="55"/>
                                         <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
-                                        <fontDescription key="fontDescription" name="Futura-Bold" family="Futura" pointSize="20"/>
+                                        <fontDescription key="fontDescription" name="Futura-CondensedExtraBold" family="Futura" pointSize="20"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="TARGET HIT" textAlignment="center" lineBreakMode="characterWrap" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="9Ea-L7-5t4">
                                         <rect key="frame" x="187.5" y="0.0" width="187.5" height="55"/>
                                         <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
-                                        <fontDescription key="fontDescription" name="Futura-Bold" family="Futura" pointSize="20"/>
+                                        <fontDescription key="fontDescription" name="Futura-CondensedExtraBold" family="Futura" pointSize="20"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                 </subviews>
                             </stackView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="casualties" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" adjustsLetterSpacingToFitWidth="YES" translatesAutoresizingMaskIntoConstraints="NO" id="0ez-ep-zHQ">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" adjustsLetterSpacingToFitWidth="YES" translatesAutoresizingMaskIntoConstraints="NO" id="0ez-ep-zHQ">
                                 <rect key="frame" x="0.0" y="612" width="375" height="55"/>
                                 <color key="backgroundColor" red="0.99048223349999998" green="0.99048223349999998" blue="0.99048223349999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
@@ -384,17 +385,26 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="TIME LOW" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="koZ-MQ-vFr">
+                                <rect key="frame" x="0.0" y="119" width="375" height="58.5"/>
+                                <fontDescription key="fontDescription" name="Futura-Bold" family="Futura" pointSize="45"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="g3a-Cc-9KM" firstAttribute="top" secondItem="Fc2-NY-qwx" secondAttribute="top" id="4Wx-lC-bQ7"/>
+                            <constraint firstItem="koZ-MQ-vFr" firstAttribute="leading" secondItem="Zr7-CX-QJx" secondAttribute="leading" id="7eP-fd-uLn"/>
                             <constraint firstItem="g3a-Cc-9KM" firstAttribute="trailing" secondItem="Zr7-CX-QJx" secondAttribute="trailing" id="9sY-1U-b6W"/>
                             <constraint firstItem="0ez-ep-zHQ" firstAttribute="trailing" secondItem="Zr7-CX-QJx" secondAttribute="trailing" id="Gd5-g3-Ydx"/>
                             <constraint firstItem="g3a-Cc-9KM" firstAttribute="leading" secondItem="Zr7-CX-QJx" secondAttribute="leading" id="NQr-Tw-SAy"/>
+                            <constraint firstItem="koZ-MQ-vFr" firstAttribute="top" secondItem="Zr7-CX-QJx" secondAttribute="top" constant="99" id="QvQ-ej-RKR"/>
                             <constraint firstItem="oN0-1p-56G" firstAttribute="leading" secondItem="Zr7-CX-QJx" secondAttribute="leading" id="Rqc-GH-6r0"/>
                             <constraint firstItem="Zr7-CX-QJx" firstAttribute="trailing" secondItem="oN0-1p-56G" secondAttribute="trailing" id="ahH-bi-rtk"/>
                             <constraint firstItem="0ez-ep-zHQ" firstAttribute="top" secondItem="oN0-1p-56G" secondAttribute="bottom" id="b7q-3M-Suv"/>
                             <constraint firstItem="oN0-1p-56G" firstAttribute="height" secondItem="0ez-ep-zHQ" secondAttribute="height" id="gw2-tt-rlq"/>
+                            <constraint firstItem="Zr7-CX-QJx" firstAttribute="trailing" secondItem="koZ-MQ-vFr" secondAttribute="trailing" id="qPk-FO-Xtb"/>
                             <constraint firstItem="Zr7-CX-QJx" firstAttribute="bottom" secondItem="0ez-ep-zHQ" secondAttribute="bottom" id="slV-yX-DBv"/>
                             <constraint firstItem="g3a-Cc-9KM" firstAttribute="bottom" secondItem="Zr7-CX-QJx" secondAttribute="bottom" id="sml-s6-QA0"/>
                             <constraint firstItem="0ez-ep-zHQ" firstAttribute="leading" secondItem="Zr7-CX-QJx" secondAttribute="leading" id="uqb-CK-nEC"/>
@@ -406,6 +416,7 @@
                         <outlet property="hitIndicator" destination="9Ea-L7-5t4" id="XLM-SY-b8q"/>
                         <outlet property="sceneView" destination="g3a-Cc-9KM" id="4UD-I6-1xM"/>
                         <outlet property="targetingLabel" destination="s6n-AY-Apk" id="H9Y-wL-BhF"/>
+                        <outlet property="timeLowLabel" destination="koZ-MQ-vFr" id="2a7-Dx-b0h"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0E7-Fm-xF5" userLabel="First Responder" sceneMemberID="firstResponder"/>
