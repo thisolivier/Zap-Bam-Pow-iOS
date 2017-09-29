@@ -12,10 +12,11 @@ import SocketIO
 class SetupGameViewController: UIViewController, UITableViewDelegate, UITableViewDataSource{
     var delegate:GameViewController?
     var players:[String]?
-    let socket = SocketIOClient(socketURL: URL(string: "http://192.168.1.86:8000")!, config: [.log(false), .forcePolling(true)])
+    let socket = SocketIOClient(socketURL: URL(string: "http://192.168.1.231:8000")!, config: [.log(false), .forcePolling(true)])
     var gameDestination: PlayViewController?
     var endGameDestination: GameOverController?
     var adminName: String?
+    var dummyTime = 70000
     
     @IBOutlet weak var yourNameLabel: UILabel!
     @IBOutlet weak var currentPlayersTableView: UITableView!
@@ -29,7 +30,7 @@ class SetupGameViewController: UIViewController, UITableViewDelegate, UITableVie
             players = ["Please wait for next game"]
         }
         eventHandlers()
-        getAdmin("http://192.168.1.86:8000/admin")
+        getAdmin("http://192.168.1.231:8000/admin")
         socket.connect()
     }
     
@@ -79,7 +80,7 @@ class SetupGameViewController: UIViewController, UITableViewDelegate, UITableVie
     
     @IBAction func startGameButtonPressed(_ sender: Any) {
         if delegate?.myName == adminName! {
-            socket.emit("startGame")
+            socket.emit("startGame", self.dummyTime)
         }
     }
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

@@ -16,6 +16,7 @@ struct Colours {
     var UIDarkTeal = UIColor(red:0, green: 0.765, blue: 0.8, alpha: 1)
     var TeamBlue = UIColor(red:0, green: 0.478, blue: 0.8, alpha: 1)
     var TeamOrange = UIColor(red: 1, green: 0.545, blue: 0, alpha: 1)
+    var UIGray = UIColor(white: 0.33, alpha: 1)
 }
 
 struct GameTarget {

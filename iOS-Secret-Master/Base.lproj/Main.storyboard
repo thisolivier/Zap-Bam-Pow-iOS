@@ -10,10 +10,8 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <customFonts key="customFonts">
-        <array key="AppleSDGothicNeo.ttc">
-            <string>AppleSDGothicNeo-Bold</string>
-        </array>
         <array key="Futura.ttc">
+            <string>Futura-Bold</string>
             <string>Futura-Medium</string>
         </array>
     </customFonts>
@@ -373,42 +371,47 @@
                                     <outletCollection property="gestureRecognizers" destination="MXM-hw-ROx" appends="YES" id="AJ9-hD-U0o"/>
                                 </connections>
                             </arskView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="TARGET LOCK" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="s6n-AY-Apk">
-                                <rect key="frame" x="108" y="627" width="159.5" height="30"/>
-                                <fontDescription key="fontDescription" name="AppleSDGothicNeo-Bold" family="Apple SD Gothic Neo" pointSize="25"/>
-                                <color key="textColor" red="0.0047458361057282072" green="1" blue="0.3978387366888454" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" adjustsLetterSpacingToFitWidth="YES" translatesAutoresizingMaskIntoConstraints="NO" id="0ez-ep-zHQ">
-                                <rect key="frame" x="0.0" y="20" width="375" height="21"/>
+                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="oN0-1p-56G">
+                                <rect key="frame" x="0.0" y="557" width="375" height="55"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="TARGET LOCK" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="s6n-AY-Apk">
+                                        <rect key="frame" x="0.0" y="0.0" width="187.5" height="55"/>
+                                        <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                        <fontDescription key="fontDescription" name="Futura-Bold" family="Futura" pointSize="20"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="TARGET HIT" textAlignment="center" lineBreakMode="characterWrap" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="9Ea-L7-5t4">
+                                        <rect key="frame" x="187.5" y="0.0" width="187.5" height="55"/>
+                                        <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                        <fontDescription key="fontDescription" name="Futura-Bold" family="Futura" pointSize="20"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                            </stackView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="casualties" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" adjustsLetterSpacingToFitWidth="YES" translatesAutoresizingMaskIntoConstraints="NO" id="0ez-ep-zHQ">
+                                <rect key="frame" x="0.0" y="612" width="375" height="55"/>
                                 <color key="backgroundColor" red="0.99048223349999998" green="0.99048223349999998" blue="0.99048223349999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="HIT" textAlignment="center" lineBreakMode="characterWrap" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="9Ea-L7-5t4">
-                                <rect key="frame" x="168" y="575" width="39.5" height="42"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="42" id="8n6-I3-sl0"/>
+                                    <constraint firstAttribute="height" constant="55" id="dKf-jK-Qch"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" name="AppleSDGothicNeo-Bold" family="Apple SD Gothic Neo" pointSize="25"/>
-                                <color key="textColor" red="1" green="0.14913141730000001" blue="0.0" alpha="1" colorSpace="deviceRGB"/>
+                                <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="20"/>
+                                <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="9Ea-L7-5t4" firstAttribute="centerX" secondItem="Fc2-NY-qwx" secondAttribute="centerX" id="3kE-cb-hCY"/>
                             <constraint firstItem="g3a-Cc-9KM" firstAttribute="top" secondItem="Fc2-NY-qwx" secondAttribute="top" id="4Wx-lC-bQ7"/>
                             <constraint firstItem="g3a-Cc-9KM" firstAttribute="trailing" secondItem="Zr7-CX-QJx" secondAttribute="trailing" id="9sY-1U-b6W"/>
-                            <constraint firstItem="Zr7-CX-QJx" firstAttribute="trailing" secondItem="0ez-ep-zHQ" secondAttribute="trailing" id="JZP-X0-sbZ"/>
+                            <constraint firstItem="0ez-ep-zHQ" firstAttribute="trailing" secondItem="Zr7-CX-QJx" secondAttribute="trailing" id="Gd5-g3-Ydx"/>
                             <constraint firstItem="g3a-Cc-9KM" firstAttribute="leading" secondItem="Zr7-CX-QJx" secondAttribute="leading" id="NQr-Tw-SAy"/>
-                            <constraint firstItem="0ez-ep-zHQ" firstAttribute="leading" secondItem="Zr7-CX-QJx" secondAttribute="leading" id="QTb-y9-3ez"/>
-                            <constraint firstItem="s6n-AY-Apk" firstAttribute="top" secondItem="9Ea-L7-5t4" secondAttribute="bottom" constant="10" id="gXq-5R-3dT"/>
-                            <constraint firstItem="Zr7-CX-QJx" firstAttribute="bottom" secondItem="s6n-AY-Apk" secondAttribute="bottom" constant="10" id="p5h-pb-laQ"/>
+                            <constraint firstItem="oN0-1p-56G" firstAttribute="leading" secondItem="Zr7-CX-QJx" secondAttribute="leading" id="Rqc-GH-6r0"/>
+                            <constraint firstItem="Zr7-CX-QJx" firstAttribute="trailing" secondItem="oN0-1p-56G" secondAttribute="trailing" id="ahH-bi-rtk"/>
+                            <constraint firstItem="0ez-ep-zHQ" firstAttribute="top" secondItem="oN0-1p-56G" secondAttribute="bottom" id="b7q-3M-Suv"/>
+                            <constraint firstItem="oN0-1p-56G" firstAttribute="height" secondItem="0ez-ep-zHQ" secondAttribute="height" id="gw2-tt-rlq"/>
+                            <constraint firstItem="Zr7-CX-QJx" firstAttribute="bottom" secondItem="0ez-ep-zHQ" secondAttribute="bottom" id="slV-yX-DBv"/>
                             <constraint firstItem="g3a-Cc-9KM" firstAttribute="bottom" secondItem="Zr7-CX-QJx" secondAttribute="bottom" id="sml-s6-QA0"/>
-                            <constraint firstItem="0ez-ep-zHQ" firstAttribute="top" secondItem="Zr7-CX-QJx" secondAttribute="top" id="ue6-KA-URm"/>
-                            <constraint firstItem="s6n-AY-Apk" firstAttribute="centerX" secondItem="Fc2-NY-qwx" secondAttribute="centerX" id="v73-Rp-6u7"/>
+                            <constraint firstItem="0ez-ep-zHQ" firstAttribute="leading" secondItem="Zr7-CX-QJx" secondAttribute="leading" id="uqb-CK-nEC"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="Zr7-CX-QJx"/>
                     </view>
@@ -431,7 +434,7 @@
                     </connections>
                 </panGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="4841" y="197"/>
+            <point key="canvasLocation" x="4840.8000000000002" y="196.55172413793105"/>
         </scene>
         <!--Scores-->
         <scene sceneID="ula-KD-THD">
