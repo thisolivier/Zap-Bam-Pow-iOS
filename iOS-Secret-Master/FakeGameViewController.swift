@@ -19,18 +19,19 @@ class FakeGameViewController: UIViewController{
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        print("We're in the fake game")
         eventHandlers()
         socket.connect()
     }
     
+    // Setting up event listeners
     func eventHandlers() {
         socket.on("target") {result, ack in
             print("this person was shot: \(result)")
-            self.updateThings(result: result[0])
+            self.someoneGotShotHandler(result: result[0])
         }
     }
     
+    // When we trigger a shot on our device
     @IBAction func shootPressed(_ sender: UIButton) {
         var data = [String:String]()
         data["shooter"] = currentPlayerName
@@ -38,8 +39,9 @@ class FakeGameViewController: UIViewController{
         count += 1
         socket.emit("shotsFired", data)
     }
-
-    func updateThings(result:Any){
+    
+    // Handler for when someone gets shot
+    func someoneGotShotHandler(result:Any){
         target.text = "\(result) was just shot, ouch!!"
     }
     

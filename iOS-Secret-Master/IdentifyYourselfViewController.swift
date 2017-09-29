@@ -33,7 +33,7 @@ class IdentifyYourselfViewController: UIViewController, ARSCNViewDelegate {
         resetButtonOutlet.isHidden = true
         cameraARView.delegate = self
         setupVisionRequest()
-        //scheduledTimerWithTimeInterval()
+        scheduledTimerWithTimeInterval()
         
         // See if we have a name already
         if let delegate = delegate {
@@ -50,7 +50,7 @@ class IdentifyYourselfViewController: UIViewController, ARSCNViewDelegate {
     /*****************/
     @IBAction func savePressed(_ sender: Any) {
         if let myName = nameLabelOutput.text{
-            print("Saving new name of \(myName)")
+            print("Identify Self: Saving new name of \(myName)")
             delegate?.myName = myName
             self.navigationController?.popViewController(animated: true)
         }

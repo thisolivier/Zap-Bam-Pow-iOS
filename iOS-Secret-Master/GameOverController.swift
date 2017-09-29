@@ -27,7 +27,8 @@ class GameOverController: UIViewController{
             let task = session.dataTask(with: request, completionHandler:  {
                 data, response, error in
                 do {
-                    if let jsonResults = try JSONSerialization.jsonObject(with: data!, options: JSONSerialization.ReadingOptions.mutableContainers) as? NSDictionary {
+                    let jsonResponse = try JSONSerialization.jsonObject(with: data!, options: JSONSerialization.ReadingOptions.mutableContainers)
+                    if let jsonResults = jsonResponse as? NSDictionary {
                         print(jsonResults)
                     }
                 } catch {

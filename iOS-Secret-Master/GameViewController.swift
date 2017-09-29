@@ -17,7 +17,6 @@ class GameViewController: UIViewController{
     var myName:String = "NaName"
     let colours = Colours()
     @IBOutlet weak var identifyButtonOutlet: UIButton!
-    @IBOutlet weak var createGameButtonOutlet: UIButton!
     @IBOutlet weak var joinGameButtonOutlet: UIButton!
     
     override func viewDidLoad() {
@@ -25,7 +24,6 @@ class GameViewController: UIViewController{
         socket.connect()
         identifyButtonOutlet.backgroundColor = colours.UIOrange
         joinGameButtonOutlet.backgroundColor = colours.UITeal
-        createGameButtonOutlet.backgroundColor = colours.UIDarkTeal
     }
     
     /******************/
@@ -37,11 +35,6 @@ class GameViewController: UIViewController{
     @IBAction func joinButtonPressed(_ sender: Any) {
         if myName != "NaName" {
             performSegue(withIdentifier: "toGameSetupSegue", sender: "join")
-        }
-    }
-    @IBAction func createButtonPressed(_ sender: Any) {
-        if myName != "NaName" {
-            performSegue(withIdentifier: "toGameSetupSegue", sender: "create")
         }
     }
     
@@ -58,11 +51,7 @@ class GameViewController: UIViewController{
         if segue.identifier == "toGameSetupSegue" {
             let destination = segue.destination as! SetupGameViewController
             destination.delegate = self
-            if (sender as! String) == "join" {
-                getReadyToJoin(destination: destination)
-            } else if (sender as! String) == "create" {
-                getReadyToJoin(destination: destination)
-            }
+            getReadyToJoin(destination: destination)
         }
     }
     
@@ -71,15 +60,11 @@ class GameViewController: UIViewController{
     /***********/
     
     func getReadyToJoin(destination: SetupGameViewController){
-        if !self.myName.isEmpty {
-            
-        }
-        socket.emit("joinChat", self.myName)
+        socket.emit("joinGame", self.myName)
         socket.on("allUsers") {result, ack in
-            let formatted = result as! NSArray
+            let formatted = result as NSArray
             self.updatePlayers(destination: destination, players: formatted[0] as! NSArray)
         }
-        
     }
     
     
@@ -89,7 +74,6 @@ class GameViewController: UIViewController{
     /*****************************************/
     
     func setNewName(_ newName:String){
-        
         if newName != "Enter Name" {
             self.myName = newName
             let alertController = UIAlertController(title: "Name Saved", message: newName, preferredStyle: .alert)
@@ -103,7 +87,7 @@ class GameViewController: UIViewController{
         }
     }
     func updatePlayers(destination: SetupGameViewController, players: NSArray)  {
-        destination.players = players as! [String]
+        destination.players = players as? [String]
         destination.currentPlayersTableView.reloadData()
     }
     

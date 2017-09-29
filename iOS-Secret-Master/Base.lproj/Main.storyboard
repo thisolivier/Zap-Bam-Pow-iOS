@@ -30,7 +30,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="551"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zaS-1j-t2w">
-                                        <rect key="frame" x="0.0" y="0.0" width="375" height="183.5"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="275.5"/>
                                         <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="25"/>
                                         <state key="normal" title="THE GAME">
                                             <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -40,23 +40,13 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eU5-GP-5k5">
-                                        <rect key="frame" x="0.0" y="183.5" width="375" height="184"/>
+                                        <rect key="frame" x="0.0" y="275.5" width="375" height="275.5"/>
                                         <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="25"/>
                                         <state key="normal" title="NOSTALGIA">
                                             <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         </state>
                                         <connections>
                                             <action selector="scoreButtonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="3OA-yd-jNe"/>
-                                        </connections>
-                                    </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="p3b-fW-3yg">
-                                        <rect key="frame" x="0.0" y="367.5" width="375" height="183.5"/>
-                                        <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="25"/>
-                                        <state key="normal" title="PLAY">
-                                            <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
-                                        </state>
-                                        <connections>
-                                            <action selector="playButtonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="f8w-VT-Dgl"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -77,7 +67,6 @@
                         <outlet property="scoreButtonOutlet" destination="eU5-GP-5k5" id="BWz-Dn-a52"/>
                         <segue destination="dZv-FK-7rq" kind="show" identifier="toScoresSegue" id="gPO-4d-Tz2"/>
                         <segue destination="zDV-5Y-M2E" kind="show" identifier="toGameSegue" id="lWL-Ig-2LI"/>
-                        <segue destination="QmA-ue-tKH" kind="presentation" identifier="toPlaySegue" id="268-hO-BQ6"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -96,7 +85,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="551"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mVF-qe-ljK">
-                                        <rect key="frame" x="0.0" y="0.0" width="375" height="183.5"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="275.5"/>
                                         <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="26"/>
                                         <state key="normal" title="IDENTIFY YOURSELF">
                                             <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -106,23 +95,13 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jaK-bk-rox">
-                                        <rect key="frame" x="0.0" y="183.5" width="375" height="184"/>
+                                        <rect key="frame" x="0.0" y="275.5" width="375" height="275.5"/>
                                         <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="27"/>
                                         <state key="normal" title="JOIN GAME">
                                             <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         </state>
                                         <connections>
                                             <action selector="joinButtonPressed:" destination="zDV-5Y-M2E" eventType="touchUpInside" id="rbh-pO-n2H"/>
-                                        </connections>
-                                    </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="T52-XH-lJU">
-                                        <rect key="frame" x="0.0" y="367.5" width="375" height="183.5"/>
-                                        <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="27"/>
-                                        <state key="normal" title="CREATE GAME">
-                                            <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        </state>
-                                        <connections>
-                                            <action selector="createButtonPressed:" destination="zDV-5Y-M2E" eventType="touchUpInside" id="jXI-eB-EF2"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -138,7 +117,6 @@
                         <viewLayoutGuide key="safeArea" id="Z0M-wQ-iuq"/>
                     </view>
                     <connections>
-                        <outlet property="createGameButtonOutlet" destination="T52-XH-lJU" id="5Rg-GL-HFv"/>
                         <outlet property="identifyButtonOutlet" destination="mVF-qe-ljK" id="jsE-KX-VgP"/>
                         <outlet property="joinGameButtonOutlet" destination="jaK-bk-rox" id="s46-IP-YAe"/>
                         <segue destination="Kp5-DN-10a" kind="show" identifier="toIdentifySegue" id="BDb-gZ-IRF"/>
@@ -158,7 +136,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="1VL-zZ-naw">
-                                <rect key="frame" x="20" y="117" width="335" height="318"/>
+                                <rect key="frame" x="20" y="61" width="335" height="374"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="playerCell" textLabel="cDQ-Vx-YVa" style="IBUITableViewCellStyleDefault" id="4ek-mu-wYC">
@@ -187,12 +165,6 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="You Are Admin?" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="su4-rt-AXw">
-                                <rect key="frame" x="20" y="76" width="335" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yGk-Jm-vvF">
                                 <rect key="frame" x="0.0" y="481" width="375" height="70"/>
                                 <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -200,7 +172,7 @@
                                     <constraint firstAttribute="height" constant="70" id="N93-Qn-99A"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="20"/>
-                                <state key="normal" title="START GAME">
+                                <state key="normal" title="- PLEASE WAIT -">
                                     <color key="titleColor" red="0.99048223350253806" green="0.99048223350253806" blue="0.99048223350253806" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
                                 <connections>
@@ -212,26 +184,23 @@
                         <constraints>
                             <constraint firstItem="5ze-H7-3KS" firstAttribute="trailing" secondItem="yGk-Jm-vvF" secondAttribute="trailing" id="98O-k3-gAb"/>
                             <constraint firstItem="1VL-zZ-naw" firstAttribute="leading" secondItem="5ze-H7-3KS" secondAttribute="leading" constant="20" id="BTH-r0-5rE"/>
+                            <constraint firstItem="1VL-zZ-naw" firstAttribute="top" secondItem="KbA-0M-L5q" secondAttribute="bottom" id="CMY-Wd-lT2"/>
                             <constraint firstItem="5ze-H7-3KS" firstAttribute="trailing" secondItem="KbA-0M-L5q" secondAttribute="trailing" constant="20" id="CX7-tT-a17"/>
-                            <constraint firstItem="1VL-zZ-naw" firstAttribute="top" secondItem="su4-rt-AXw" secondAttribute="bottom" constant="20" id="DOM-aZ-ybY"/>
-                            <constraint firstItem="su4-rt-AXw" firstAttribute="top" secondItem="KbA-0M-L5q" secondAttribute="bottom" constant="15" id="Fh6-dm-Dhy"/>
                             <constraint firstItem="yGk-Jm-vvF" firstAttribute="top" secondItem="1VL-zZ-naw" secondAttribute="bottom" constant="46" id="GsM-2L-mSE"/>
                             <constraint firstItem="5ze-H7-3KS" firstAttribute="trailing" secondItem="1VL-zZ-naw" secondAttribute="trailing" constant="20" id="HqJ-69-4hx"/>
                             <constraint firstItem="KbA-0M-L5q" firstAttribute="top" secondItem="5ze-H7-3KS" secondAttribute="top" constant="40" id="Jor-UD-JBy"/>
                             <constraint firstItem="KbA-0M-L5q" firstAttribute="leading" secondItem="5ze-H7-3KS" secondAttribute="leading" constant="20" id="PvL-11-hsm"/>
                             <constraint firstItem="yGk-Jm-vvF" firstAttribute="leading" secondItem="5ze-H7-3KS" secondAttribute="leading" id="ePH-Ms-DTq"/>
                             <constraint firstItem="yGk-Jm-vvF" firstAttribute="bottom" secondItem="5ze-H7-3KS" secondAttribute="bottom" id="ikt-OH-Mv2"/>
-                            <constraint firstItem="5ze-H7-3KS" firstAttribute="trailing" secondItem="su4-rt-AXw" secondAttribute="trailing" constant="20" id="rRu-kx-yIi"/>
-                            <constraint firstItem="su4-rt-AXw" firstAttribute="leading" secondItem="5ze-H7-3KS" secondAttribute="leading" constant="20" id="twp-XS-aEo"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="5ze-H7-3KS"/>
                     </view>
                     <connections>
                         <outlet property="currentPlayersTableView" destination="1VL-zZ-naw" id="twi-HP-luL"/>
-                        <outlet property="isAdminLabel" destination="su4-rt-AXw" id="gZb-ny-RzZ"/>
+                        <outlet property="startGameButtonOutlet" destination="yGk-Jm-vvF" id="jpN-98-IKo"/>
                         <outlet property="yourNameLabel" destination="KbA-0M-L5q" id="0De-5o-bvF"/>
-                        <segue destination="nIO-8A-Ebd" kind="presentation" identifier="toFakeGameSegue" id="0pp-lb-mt1"/>
                         <segue destination="KTL-7h-KST" kind="presentation" identifier="toGameOverSegue" id="u4U-bf-0LC"/>
+                        <segue destination="QmA-ue-tKH" kind="presentation" identifier="startGameSegue" id="fGR-Pm-QYE"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="RRs-wJ-TU4" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -273,7 +242,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5Qe-9w-5VB" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4391" y="-179"/>
+            <point key="canvasLocation" x="4841" y="-517"/>
         </scene>
         <!--Game Over Controller-->
         <scene sceneID="0Fk-N9-xXQ">
@@ -298,7 +267,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="kkw-Z5-TbZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4390" y="612"/>
+            <point key="canvasLocation" x="4390" y="972"/>
         </scene>
         <!--Identify Yourself-->
         <scene sceneID="ybF-xe-UAv">
@@ -405,13 +374,20 @@
                                 </connections>
                             </arskView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="TARGET LOCK" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="s6n-AY-Apk">
-                                <rect key="frame" x="108" y="562" width="159.5" height="30"/>
+                                <rect key="frame" x="108" y="627" width="159.5" height="30"/>
                                 <fontDescription key="fontDescription" name="AppleSDGothicNeo-Bold" family="Apple SD Gothic Neo" pointSize="25"/>
                                 <color key="textColor" red="0.0047458361057282072" green="1" blue="0.3978387366888454" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" adjustsLetterSpacingToFitWidth="YES" translatesAutoresizingMaskIntoConstraints="NO" id="0ez-ep-zHQ">
+                                <rect key="frame" x="0.0" y="20" width="375" height="21"/>
+                                <color key="backgroundColor" red="0.99048223349999998" green="0.99048223349999998" blue="0.99048223349999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="HIT" textAlignment="center" lineBreakMode="characterWrap" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="9Ea-L7-5t4">
-                                <rect key="frame" x="168" y="117" width="39.5" height="42"/>
+                                <rect key="frame" x="168" y="575" width="39.5" height="42"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="42" id="8n6-I3-sl0"/>
                                 </constraints>
@@ -425,15 +401,19 @@
                             <constraint firstItem="9Ea-L7-5t4" firstAttribute="centerX" secondItem="Fc2-NY-qwx" secondAttribute="centerX" id="3kE-cb-hCY"/>
                             <constraint firstItem="g3a-Cc-9KM" firstAttribute="top" secondItem="Fc2-NY-qwx" secondAttribute="top" id="4Wx-lC-bQ7"/>
                             <constraint firstItem="g3a-Cc-9KM" firstAttribute="trailing" secondItem="Zr7-CX-QJx" secondAttribute="trailing" id="9sY-1U-b6W"/>
+                            <constraint firstItem="Zr7-CX-QJx" firstAttribute="trailing" secondItem="0ez-ep-zHQ" secondAttribute="trailing" id="JZP-X0-sbZ"/>
                             <constraint firstItem="g3a-Cc-9KM" firstAttribute="leading" secondItem="Zr7-CX-QJx" secondAttribute="leading" id="NQr-Tw-SAy"/>
-                            <constraint firstItem="9Ea-L7-5t4" firstAttribute="top" secondItem="Zr7-CX-QJx" secondAttribute="top" constant="97" id="NaW-ba-GsE"/>
-                            <constraint firstItem="Zr7-CX-QJx" firstAttribute="bottom" secondItem="s6n-AY-Apk" secondAttribute="bottom" constant="75" id="p5h-pb-laQ"/>
+                            <constraint firstItem="0ez-ep-zHQ" firstAttribute="leading" secondItem="Zr7-CX-QJx" secondAttribute="leading" id="QTb-y9-3ez"/>
+                            <constraint firstItem="s6n-AY-Apk" firstAttribute="top" secondItem="9Ea-L7-5t4" secondAttribute="bottom" constant="10" id="gXq-5R-3dT"/>
+                            <constraint firstItem="Zr7-CX-QJx" firstAttribute="bottom" secondItem="s6n-AY-Apk" secondAttribute="bottom" constant="10" id="p5h-pb-laQ"/>
                             <constraint firstItem="g3a-Cc-9KM" firstAttribute="bottom" secondItem="Zr7-CX-QJx" secondAttribute="bottom" id="sml-s6-QA0"/>
+                            <constraint firstItem="0ez-ep-zHQ" firstAttribute="top" secondItem="Zr7-CX-QJx" secondAttribute="top" id="ue6-KA-URm"/>
                             <constraint firstItem="s6n-AY-Apk" firstAttribute="centerX" secondItem="Fc2-NY-qwx" secondAttribute="centerX" id="v73-Rp-6u7"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="Zr7-CX-QJx"/>
                     </view>
                     <connections>
+                        <outlet property="casualtyLabel" destination="0ez-ep-zHQ" id="Paf-OA-Jah"/>
                         <outlet property="hitIndicator" destination="9Ea-L7-5t4" id="XLM-SY-b8q"/>
                         <outlet property="sceneView" destination="g3a-Cc-9KM" id="4UD-I6-1xM"/>
                         <outlet property="targetingLabel" destination="s6n-AY-Apk" id="H9Y-wL-BhF"/>
@@ -451,7 +431,7 @@
                     </connections>
                 </panGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="701.60000000000002" y="886.50674662668678"/>
+            <point key="canvasLocation" x="4841" y="197"/>
         </scene>
         <!--Scores-->
         <scene sceneID="ula-KD-THD">

@@ -10,14 +10,16 @@ import UIKit
 import SpriteKit
 import ARKit
 import Vision
-import AVFoundation
+import SocketIO
 
 class PlayViewController: UIViewController, ARSKViewDelegate {
-    
+    /******************/
+    /* Initialization */
+    /******************/
     @IBOutlet weak var sceneView: ARSKView!
     @IBOutlet weak var hitIndicator: UILabel!
     @IBOutlet weak var targetingLabel: UILabel!
-    
+    @IBOutlet weak var casualtyLabel: UILabel!
     
     // Variable for storing the barcode request
     var qRRequest:VNDetectBarcodesRequest?
@@ -28,11 +30,17 @@ class PlayViewController: UIViewController, ARSKViewDelegate {
     // Variable to report whether tracked QR code is in the target area
     var qRInTarget:GameTarget? = nil
     
-    var player: AVAudioPlayer!
+    // Imported variables from Wura's code, check over!!!
+    var currentPlayerName:String?
+    var allPlayers:[String]?
+    
+    // Setup our socket
+    let socket = SocketIOClient(socketURL: URL(string: "http://192.168.1.86:8000")!, config: [.log(false), .forcePolling(true)])
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        print("--We're in the play view controller")
+        print("We're in the play view controller")
+        // Loading scene which contains crosshairs
         let scene = PlayScene(size: sceneView.bounds.size)
         scene.scaleMode = .resizeFill
         scene.anchorPoint = CGPoint(x: 0.5, y: 0.5)
@@ -48,6 +56,35 @@ class PlayViewController: UIViewController, ARSKViewDelegate {
         // Setup vision request and start detection loop
         setupVisionRequest()
         scheduledTimerWithTimeInterval()
+        
+        // Initialize server whozits
+        eventHandlers()
+        socket.connect()
+    }
+    
+    /************************/
+    /* Server communication */
+    /************************/
+    
+    // Setting up event listeners
+    func eventHandlers() {
+        socket.on("target") {result, ack in
+            print("this person was shot: \(result)")
+            self.someoneGotShotHandler(result: result[0])
+        }
+    }
+    
+    // When we trigger a shot on our device
+    func sendShotToServer(victim:String) {
+        var data = [String:String]()
+        data["shooter"] = currentPlayerName
+        data["target"] = victim
+        socket.emit("shotsFired", data)
+    }
+    
+    // Handler for when someone gets shot
+    func someoneGotShotHandler(result:Any){
+        casualtyLabel.text = "\(result) was just shot, ouch!!"
     }
     
     /************************/
@@ -105,9 +142,9 @@ class PlayViewController: UIViewController, ARSKViewDelegate {
         qRInTarget = nil
     }
     
-    /********************************/
+    /****************/
     /* Targeting    */
-    /********************************/
+    /****************/
     
     // Defines a square region in center of screen and detects whether QR code is located within it
     func isTargeted() {
@@ -131,9 +168,9 @@ class PlayViewController: UIViewController, ARSKViewDelegate {
         }
     }
     
-    /********************************/
+    /************/
     /* Firing   */
-    /********************************/
+    /************/
     
     // Detects screen tap and initiates a fresh QR detection and targetting
     @IBAction func didTapScreen(_ sender: UITapGestureRecognizer) {
@@ -142,6 +179,7 @@ class PlayViewController: UIViewController, ARSKViewDelegate {
         if let victim = qRInTarget {
             flashHit(alpha: 0.0, start: 0, end: 6)
             print("\(victim.name) hit!")
+            sendShotToServer(victim: victim.name)
         }
     }
    

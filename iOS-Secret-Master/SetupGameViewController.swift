@@ -11,21 +11,22 @@ import SocketIO
 
 class SetupGameViewController: UIViewController, UITableViewDelegate, UITableViewDataSource{
     var delegate:GameViewController?
-    var endGameDestination: GameOverController?
     var players:[String]?
     let socket = SocketIOClient(socketURL: URL(string: "http://192.168.1.86:8000")!, config: [.log(false), .forcePolling(true)])
-    var gameDestination:FakeGameViewController?
+    var gameDestination: PlayViewController?
+    var endGameDestination: GameOverController?
+    var adminName: String?
     
-    @IBOutlet weak var isAdminLabel: UILabel!
     @IBOutlet weak var yourNameLabel: UILabel!
     @IBOutlet weak var currentPlayersTableView: UITableView!
+    @IBOutlet weak var startGameButtonOutlet: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         currentPlayersTableView.delegate = self
         currentPlayersTableView.dataSource = self
         if players == nil{
-            players = ["Olivier", "Lantz", "Wura"]
+            players = ["Please wait for next game"]
         }
         eventHandlers()
         getAdmin("http://192.168.1.86:8000/admin")
@@ -40,7 +41,13 @@ class SetupGameViewController: UIViewController, UITableViewDelegate, UITableVie
                 data, response, error in
                 do {
                     if let jsonResults = try JSONSerialization.jsonObject(with: data!, options: JSONSerialization.ReadingOptions.mutableContainers) as? NSDictionary {
-                        print(jsonResults)
+                        print("Setup Controller: Got response from admin query")
+                        self.adminName = jsonResults["data"] as? String
+                        if self.delegate?.myName == self.adminName {
+                            DispatchQueue.main.async {
+                                self.setupForAdmin()
+                            }
+                        }
                     }
                 } catch {
                     print(error)
@@ -50,32 +57,34 @@ class SetupGameViewController: UIViewController, UITableViewDelegate, UITableVie
         }
     }
     
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return (players?.count)!
+    func setupForAdmin(){
+        print("Current user is an admin")
+        startGameButtonOutlet.titleLabel?.text = "START GAME"
     }
     
     func eventHandlers() {
         socket.on("beginGame") {result, ack in
             print("Coming from the game creator \(result)")
-            self.performSegue(withIdentifier: "toFakeGameSegue", sender: nil)
+            self.performSegue(withIdentifier: "startGameSegue", sender: nil)
         }
         socket.on("gameOver") {result, ark in
-            print("Coming from the fake game prepare for curr user: \(result)")
+            print("Coming from the game prepare for curr user: \(result)")
             
             self.gameDestination!.dismiss(animated: true, completion: {
                 self.performSegue(withIdentifier: "toGameOverSegue", sender: result)
             })
         }
-
     }
     
     
     @IBAction func startGameButtonPressed(_ sender: Any) {
-        socket.emit("startGame")
+        if delegate?.myName == adminName! {
+            socket.emit("startGame")
+        }
     }
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "toFakeGameSegue" {
-            gameDestination = segue.destination as? FakeGameViewController
+        if segue.identifier == "startGameSegue" {
+            gameDestination = segue.destination as? PlayViewController
             gameDestination!.allPlayers = players
             gameDestination!.currentPlayerName = delegate?.myName
         }
@@ -86,6 +95,13 @@ class SetupGameViewController: UIViewController, UITableViewDelegate, UITableVie
     }
     func gameData(destination: GameOverController?, game: Any)  {
         destination?.game = game
+    }
+    
+    /********************/
+    /* Setting up table */
+    /********************/
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return (players?.count)!
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
