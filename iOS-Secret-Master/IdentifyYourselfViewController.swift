@@ -70,7 +70,12 @@ class IdentifyYourselfViewController: UIViewController, ARSCNViewDelegate {
         {
             _ in
             let textField = alert.textFields![0]
-            nameLabelOutput.text = textField
+            self.nameLabelOutput.text = textField.text
+            // These functions should be moved to a helper function, since are repeated in QR code detection success
+            self.cameraARView.session.pause()
+            self.qRTimer.invalidate()
+            self.resetButtonOutlet.isHidden = false
+            self.nameLabelOutput.isHidden = false
         }
         
         let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
