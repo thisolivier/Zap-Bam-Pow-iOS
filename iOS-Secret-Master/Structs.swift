@@ -22,3 +22,22 @@ struct GameTarget {
     var coordinate: CGPoint
     var name: String
 }
+
+struct GameServer {
+    static var address = "192.168.1.231"
+}
+
+struct GameResults {
+    var playersAndHits: [PlayerRelations]
+    var playersAndLosses: [PlayerRelations]
+}
+struct PlayerRelations{
+    var name:String
+    var tallys:[PlayerTally]
+}
+struct PlayerTally {
+    var name:String
+    var count:Int
+}
+
+
