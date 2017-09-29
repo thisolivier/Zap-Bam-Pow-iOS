@@ -75,7 +75,6 @@ class PlayViewController: UIViewController, ARSKViewDelegate {
                     self.qRCenter = center
                     print ("Payload: \(barcode.payloadStringValue!) at \(center)")
                     // Checks whether the tracked QR code is lined up in the crosshairs
-                    self.isTargeted()
                 }
             }
         })
@@ -88,6 +87,7 @@ class PlayViewController: UIViewController, ARSKViewDelegate {
         if let currentFrame = currentFrame {
             let cameraCurrent = currentFrame.capturedImage
             let visionImageHandler = VNImageRequestHandler(cvPixelBuffer: cameraCurrent, options: [.properties : ""])
+            self.isTargeted()
             guard let _ = try? visionImageHandler.perform([qRRequest!]) else {
                 return print("Could not perform barcode-request!")
             }
@@ -99,12 +99,17 @@ class PlayViewController: UIViewController, ARSKViewDelegate {
         qRTimer = Timer.scheduledTimer(timeInterval: 0.66, target: self, selector: #selector(self.detectQR), userInfo: nil, repeats: true)
     }
     
+//    self.qRCenter = nil
+//    self.inTarget = false
     /********************************/
     /* Targeting    */
     /********************************/
     
     // Defines a square region in center of screen and detects whether QR code is located within it
     func isTargeted() {
+        if qRCenter == nil {
+            inTarget = false
+        }
         if let realCenter = qRCenter{
             if realCenter.x > 0.45
                 && realCenter.x < 0.55
@@ -148,6 +153,33 @@ class PlayViewController: UIViewController, ARSKViewDelegate {
             }
         })
     }
+    /********************************/
+    /* Swipe down to exit   */
+    /********************************/
+    // define a variable to store initial touch position
+    
+    var initialTouchPoint: CGPoint = CGPoint(x: 0,y: 0)
+    
+    @IBAction func didSwipeDown(_ sender: UIPanGestureRecognizer) {
+        let touchPoint = sender.location(in: self.view?.window)
+        
+        if sender.state == UIGestureRecognizerState.began {
+            initialTouchPoint = touchPoint
+        } else if sender.state == UIGestureRecognizerState.changed {
+            if touchPoint.y - initialTouchPoint.y > 0 {
+                self.view.frame = CGRect(x: 0, y: touchPoint.y - initialTouchPoint.y, width: self.view.frame.size.width, height: self.view.frame.size.height)
+            }
+        } else if sender.state == UIGestureRecognizerState.ended || sender.state == UIGestureRecognizerState.cancelled {
+            if touchPoint.y - initialTouchPoint.y > 100 {
+                self.dismiss(animated: true, completion: nil)
+            } else {
+                UIView.animate(withDuration: 0.3, animations: {
+                    self.view.frame = CGRect(x: 0, y: 0, width: self.view.frame.size.width, height: self.view.frame.size.height)
+                })
+            }
+        }
+    }
+    
     
     /********************************/
     /* Fulfilling scene delegate    */
@@ -164,6 +196,7 @@ class PlayViewController: UIViewController, ARSKViewDelegate {
         sceneView.session.run(configuration)
         targetingLabel.isHidden = true
         hitIndicator.alpha = 0.0
+        
     }
     
     override func viewWillDisappear(_ animated: Bool) {

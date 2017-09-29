@@ -324,7 +324,7 @@
         <!--Play View Controller-->
         <scene sceneID="HDC-2J-7J3">
             <objects>
-                <viewController id="QmA-ue-tKH" customClass="PlayViewController" customModule="iOS_Secret_Master" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController modalPresentationStyle="overFullScreen" id="QmA-ue-tKH" customClass="PlayViewController" customModule="iOS_Secret_Master" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Fc2-NY-qwx">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -334,6 +334,7 @@
                                 <gestureRecognizers/>
                                 <connections>
                                     <outletCollection property="gestureRecognizers" destination="oy6-lx-RcN" appends="YES" id="TM1-LD-hE8"/>
+                                    <outletCollection property="gestureRecognizers" destination="MXM-hw-ROx" appends="YES" id="AJ9-hD-U0o"/>
                                 </connections>
                             </arskView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="TARGET LOCK" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="s6n-AY-Apk">
@@ -383,6 +384,11 @@
                         <action selector="didTapScreen:" destination="QmA-ue-tKH" id="UHd-0S-kS6"/>
                     </connections>
                 </tapGestureRecognizer>
+                <panGestureRecognizer minimumNumberOfTouches="1" id="MXM-hw-ROx">
+                    <connections>
+                        <action selector="didSwipeDown:" destination="QmA-ue-tKH" id="Hk6-yC-45C"/>
+                    </connections>
+                </panGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="701.60000000000002" y="886.50674662668678"/>
         </scene>
