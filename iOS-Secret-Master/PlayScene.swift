@@ -16,7 +16,7 @@ class PlayScene: SKScene {
     var sight: SKSpriteNode!
     
     
-    override func didMove(to view: SKView) {
+    override func didMove(to view: SKView) {                                
         // Places targetting sight.png in center of screen, could be alternated with a second .png in a ternary
         sight = SKSpriteNode(imageNamed: "sight")
         addChild(sight)
