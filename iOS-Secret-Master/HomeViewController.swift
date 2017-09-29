@@ -48,10 +48,13 @@ class HomeViewController: UIViewController {
         present(alert, animated: true, completion: nil)
     }
     
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+    /**********/
+    /* Segues */
+    /**********/
+    @IBAction func prepareForUnwind(segue: UIStoryboardSegue){
+        
     }
+    
 
 
 }

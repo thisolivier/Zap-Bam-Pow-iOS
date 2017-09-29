@@ -22,6 +22,7 @@ class SetupGameViewController: UIViewController, UITableViewDelegate, UITableVie
     var endGameDestination: GameOverController?
     var adminName: String?
     var gameTimeLimit = 80000
+    let colours = Colours()
     
     @IBOutlet weak var yourNameLabel: UILabel!
     @IBOutlet weak var currentPlayersTableView: UITableView!
@@ -122,6 +123,8 @@ class SetupGameViewController: UIViewController, UITableViewDelegate, UITableVie
         }
         if segue.identifier == "toGameOverSegue" {
             endGameDestination = segue.destination as? GameOverController
+            endGameDestination?.view.backgroundColor = colours.UIYellow
+            endGameDestination?.delegate = self
         }
     }
     

@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		092F42021F7C55200054067E /* SetupGameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 092F42011F7C55200054067E /* SetupGameViewController.swift */; };
+		099D56721F7EA8F90089F37B /* ScoresTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 099D56711F7EA8F90089F37B /* ScoresTableViewController.swift */; };
 		09C44F5F1F7C4A5900CB3CA2 /* IdentifyYourselfViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09C44F5E1F7C4A5900CB3CA2 /* IdentifyYourselfViewController.swift */; };
 		09FAB3131F7C276C0057EF1B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09FAB3121F7C276C0057EF1B /* AppDelegate.swift */; };
 		09FAB3151F7C276C0057EF1B /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09FAB3141F7C276C0057EF1B /* HomeViewController.swift */; };
@@ -47,6 +48,7 @@
 /* Begin PBXFileReference section */
 		09030251AA0E58FB6A85571E /* Pods_iOS_Secret_Master.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_iOS_Secret_Master.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		092F42011F7C55200054067E /* SetupGameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetupGameViewController.swift; sourceTree = "<group>"; };
+		099D56711F7EA8F90089F37B /* ScoresTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScoresTableViewController.swift; sourceTree = "<group>"; };
 		09C44F5E1F7C4A5900CB3CA2 /* IdentifyYourselfViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IdentifyYourselfViewController.swift; sourceTree = "<group>"; };
 		09FAB30F1F7C276C0057EF1B /* iOS-Secret-Master.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "iOS-Secret-Master.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		09FAB3121F7C276C0057EF1B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -135,6 +137,7 @@
 				09C44F5E1F7C4A5900CB3CA2 /* IdentifyYourselfViewController.swift */,
 				539787881F7D22F10018E2EE /* GameOverController.swift */,
 				092F42011F7C55200054067E /* SetupGameViewController.swift */,
+				099D56711F7EA8F90089F37B /* ScoresTableViewController.swift */,
 				BF3128501F7D7CFF00B626EC /* PlayViewController.swift */,
 				BF3128521F7D820700B626EC /* PlayScene.swift */,
 				09FAB31C1F7C276C0057EF1B /* Assets.xcassets */,
@@ -478,6 +481,7 @@
 				092F42021F7C55200054067E /* SetupGameViewController.swift in Sources */,
 				539787891F7D22F10018E2EE /* GameOverController.swift in Sources */,
 				09FAB31B1F7C276C0057EF1B /* iOS_Secret_Master.xcdatamodeld in Sources */,
+				099D56721F7EA8F90089F37B /* ScoresTableViewController.swift in Sources */,
 				09FAB3151F7C276C0057EF1B /* HomeViewController.swift in Sources */,
 				09FAB3131F7C276C0057EF1B /* AppDelegate.swift in Sources */,
 			);

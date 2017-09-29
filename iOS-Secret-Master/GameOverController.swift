@@ -14,6 +14,7 @@ import SocketIO
 class GameOverController: UIViewController{
     let socket = SocketIOClient(socketURL: URL(string: "http://\(GameServer.address):8000")!, config: [.log(false), .forcePolling(true)])
     var gameResultsHolder = GameResults()
+    var delegate:SetupGameViewController?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -61,21 +62,25 @@ class GameOverController: UIViewController{
     func processResultsFromDict(_ originalDictionary:NSDictionary){
         print("Processing results form game")
         let arrayOfPlayers = originalDictionary["data"] as? [NSDictionary]
-        
         for player in arrayOfPlayers!{
             print ("-------------------------")
             print ("Working on current player")
             let myName = player["name"] as! String
-            let playerHits = gameResultsHolder.playersAndHits
+            var playerHits = gameResultsHolder.playersAndHits[myName]
+            var playerLosses = gameResultsHolder.playersAndLosses
             print (myName)
             let targets = player["targets"] as! NSDictionary
             for victim in targets {
                 let yourName = victim.key as! String
-                let yourWounds = victim.value as! Int
-                print("Individual victim \(yourName) was hit \(yourWounds) times")
+                playerHits![yourName] = victim.value as? Int
+                playerLosses[yourName]![myName] = victim.value as? Int
             }
         }
+        print (gameResultsHolder)
+        self.dismiss(animated: true, completion: unwindToScores)
     }
     
-    
+    func unwindToScores() {
+        self.performSegue(withIdentifier: "unwindToHomeView", sender: nil)
+    }
 }
