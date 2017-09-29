@@ -17,3 +17,8 @@ struct Colours {
     var TeamBlue = UIColor(red:0, green: 0.478, blue: 0.8, alpha: 1)
     var TeamOrange = UIColor(red: 1, green: 0.545, blue: 0, alpha: 1)
 }
+
+struct GameTarget {
+    var coordinate: CGPoint
+    var name: String
+}
