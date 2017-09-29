@@ -26,7 +26,7 @@ class PlayViewController: UIViewController, ARSKViewDelegate {
     // Variable for storing the center of tracked QR codes
     var qRCenter: CGPoint?
     // Variable to report whether tracked QR code is in the target area
-    var inTarget = false
+    var qRInTarget = false
     
     var player: AVAudioPlayer!
     
@@ -46,6 +46,7 @@ class PlayViewController: UIViewController, ARSKViewDelegate {
         sceneView.showsNodeCount = true
         
         // Load the SKScene from 'Arena.sks'
+        // Review to see is this can be removed
         if let scene = SKScene(fileNamed: "Arena") {
             sceneView.presentScene(scene)
         }
@@ -77,30 +78,35 @@ class PlayViewController: UIViewController, ARSKViewDelegate {
                     // Checks whether the tracked QR code is lined up in the crosshairs
                 }
             }
+            self.isTargeted()
         })
     }
     
     // Gets the current image from the ARSKView (Augmented Reality Sprite Kit View) and makes an Image Request Handler using that image.
     // It then calls the handler's perform method, and passes it the request we made earlier.
     @objc func detectQR(){
+        self.resetQRData()
         let currentFrame = sceneView.session.currentFrame
         if let currentFrame = currentFrame {
             let cameraCurrent = currentFrame.capturedImage
             let visionImageHandler = VNImageRequestHandler(cvPixelBuffer: cameraCurrent, options: [.properties : ""])
-            self.isTargeted()
             guard let _ = try? visionImageHandler.perform([qRRequest!]) else {
                 return print("Could not perform barcode-request!")
             }
         }
     }
     
-    // Starts a timer with a callback of the QR detection function. Repeats every 0.66 seconds.
+    // Starts a timer with a callback of the QR detection function
     func scheduledTimerWithTimeInterval(){
         qRTimer = Timer.scheduledTimer(timeInterval: 0.66, target: self, selector: #selector(self.detectQR), userInfo: nil, repeats: true)
     }
     
-//    self.qRCenter = nil
-//    self.inTarget = false
+    // Resets current data
+    func resetQRData(){
+        qRCenter = nil
+        qRInTarget = false
+    }
+    
     /********************************/
     /* Targeting    */
     /********************************/
@@ -108,7 +114,8 @@ class PlayViewController: UIViewController, ARSKViewDelegate {
     // Defines a square region in center of screen and detects whether QR code is located within it
     func isTargeted() {
         if qRCenter == nil {
-            inTarget = false
+            qRInTarget = false
+            targetingLabel.isHidden = true
         }
         if let realCenter = qRCenter{
             if realCenter.x > 0.45
@@ -116,11 +123,11 @@ class PlayViewController: UIViewController, ARSKViewDelegate {
                 && realCenter.y > 0.42
                 && realCenter.y < 0.57 {
                 targetingLabel.isHidden = false
-                inTarget = true
+                qRInTarget = true
                 print("Target Lock")
             } else {
                 targetingLabel.isHidden = true
-                inTarget = false
+                qRInTarget = false
             }
         }
     }
@@ -133,7 +140,7 @@ class PlayViewController: UIViewController, ARSKViewDelegate {
     @IBAction func didTapScreen(_ sender: UITapGestureRecognizer) {
         print("Screen tapped")
         self.detectQR()
-        if inTarget {
+        if qRInTarget {
             flashHit(alpha: 0.0, start: 0, end: 6)
             print("Hit!")
         }
