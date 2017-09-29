@@ -12,12 +12,20 @@ import SocketIO
 
 
 class GameOverController: UIViewController{
+<<<<<<< HEAD
+    let socket = SocketIOClient(socketURL: URL(string: "http://192.168.1.231:8000")!, config: [.log(false), .forcePolling(true)])
+    var game:Any?
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        fetchDataFrom("http://192.168.1.231:8000/all")
+=======
     let socket = SocketIOClient(socketURL: URL(string: "http://\(GameServer.address):8000")!, config: [.log(false), .forcePolling(true)])
     var gameData:Any?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         fetchDataFrom("http://\(GameServer.address):8000/all")
+>>>>>>> finalsprint-uxGameplayWaypoint
         socket.connect()
     }
     

@@ -21,6 +21,8 @@ class PlayViewController: UIViewController, ARSKViewDelegate {
     @IBOutlet weak var targetingLabel: UILabel!
     @IBOutlet weak var casualtyLabel: UILabel!
     
+    let colours = Colours()
+    
     // Variable for storing the barcode request
     var qRRequest:VNDetectBarcodesRequest?
     // Creates a new timer object
@@ -35,7 +37,11 @@ class PlayViewController: UIViewController, ARSKViewDelegate {
     var allPlayers:[String]?
     
     // Setup our socket
+<<<<<<< HEAD
+    let socket = SocketIOClient(socketURL: URL(string: "http://192.168.1.231:8000")!, config: [.log(false), .forcePolling(true)])
+=======
     let socket = SocketIOClient(socketURL: URL(string: "http://\(GameServer.address):8000")!, config: [.log(false), .forcePolling(true)])
+>>>>>>> finalsprint-uxGameplayWaypoint
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -158,20 +164,20 @@ class PlayViewController: UIViewController, ARSKViewDelegate {
     func isTargeted() {
         if qRCenterArray.count == 0 {
             qRInTarget = nil
-            targetingLabel.isHidden = true
+            targetingLabel.backgroundColor = colours.UIGray
         } else {
             for item in qRCenterArray {
                 if item.coordinate.x > 0.45
                     && item.coordinate.x < 0.55
                     && item.coordinate.y > 0.42
                     && item.coordinate.y < 0.57 {
-                    targetingLabel.isHidden = false
+                    targetingLabel.backgroundColor = colours.UITeal
                     qRInTarget = item
                     print("Target Lock on \(item.name)")
                 }
             }
             if qRInTarget == nil{
-                targetingLabel.isHidden = true
+                targetingLabel.backgroundColor = colours.UIGray
             }
         }
     }
@@ -180,27 +186,30 @@ class PlayViewController: UIViewController, ARSKViewDelegate {
     /* Firing   */
     /************/
     
-    // Detects screen tap and initiates a fresh QR detection and targetting
+    // Detects screen tap and initiates a fresh QR detection and targeting
     @IBAction func didTapScreen(_ sender: UITapGestureRecognizer) {
         print("Screen tapped")
         self.detectQR()
         if let victim = qRInTarget {
-            flashHit(alpha: 0.0, start: 0, end: 6)
+            flashHit(backgroundColor: colours.UIGray, start: 0, end: 16)
             print("\(victim.name) hit!")
             sendShotToServer(victim: victim.name)
         }
     }
    
     // Flashes a 'hit' indicator near top of screen when QR code is hit
-    func flashHit(alpha: CGFloat, start: Int, end: Int) {
-        hitIndicator.text = "HIT"
-        UIView.animate(withDuration: 0.1, animations: {
-            self.hitIndicator.alpha = alpha
-        }, completion: { success in
-            if start + 1 <= end {
-                self.flashHit(alpha: alpha == 1.0 ? 0.0 : 1.0, start: start + 1, end: end)
-            }
-        })
+    func flashHit(backgroundColor: UIColor, start: Int, end: Int) {
+        if let victim = qRInTarget {
+            hitIndicator.text = "\(victim.name) HIT"
+            UIView.animate(withDuration: 12, animations: {
+                self.hitIndicator.backgroundColor = backgroundColor
+            }, completion: { success in
+                if start + 1 <= end {
+                    self.flashHit(backgroundColor: backgroundColor == self.colours.UIRed ? self.colours.UIGray : self.colours.UIRed, start: start + 1, end: end)
+                }
+                self.hitIndicator.text = "TARGET HIT"
+            })
+        }
     }
     /********************************/
     /* Swipe down to exit   */
@@ -243,8 +252,9 @@ class PlayViewController: UIViewController, ARSKViewDelegate {
         
         // Run the view's session
         sceneView.session.run(configuration)
-        targetingLabel.isHidden = true
-        hitIndicator.alpha = 0.0
+        targetingLabel.backgroundColor = colours.UIGray
+        hitIndicator.backgroundColor = UIColor.clear
+//        hitIndicator.layer.backgroundColor = colours.UIGray
         
     }
     
