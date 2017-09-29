@@ -272,7 +272,7 @@ class PlayViewController: UIViewController, ARSKViewDelegate {
     func playSoundEffect(ofType effect: SoundEffect) {
         
         // Async to avoid substantial cost to graphics processing (may result in sound effect delay however)
-        DispatchQueue.main.async {
+//        DispatchQueue.main.async {
             do
             {
                 if let effectURL = Bundle.main.url(forResource: effect.rawValue, withExtension: "mp3") {
@@ -286,7 +286,7 @@ class PlayViewController: UIViewController, ARSKViewDelegate {
                 print(error.description)
             }
         }
-    }
+//    }
     
     
     /********************************/

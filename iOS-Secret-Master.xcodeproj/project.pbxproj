@@ -75,6 +75,8 @@
 		BF3128521F7D820700B626EC /* PlayScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayScene.swift; sourceTree = "<group>"; };
 		BFB28B7D1F7E96FE00B65768 /* shoot1.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = shoot1.wav; sourceTree = "<group>"; };
 		BFB28B7E1F7E9A5D00B65768 /* torpedo.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = torpedo.mp3; sourceTree = "<group>"; };
+		BFB28B811F7EA16400B65768 /* torpedo.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = torpedo.mp3; sourceTree = "<group>"; };
+		BFB28B821F7EA27C00B65768 /* shoot1.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = shoot1.wav; sourceTree = "<group>"; };
 		E5B33C0DBF08D7AE78F4D925 /* Pods-iOS-Secret-Master.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iOS-Secret-Master.release.xcconfig"; path = "Pods/Target Support Files/Pods-iOS-Secret-Master/Pods-iOS-Secret-Master.release.xcconfig"; sourceTree = "<group>"; };
 		EF5671C028BB0301B4DE653D /* Pods-iOS-Secret-MasterTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iOS-Secret-MasterTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-iOS-Secret-MasterTests/Pods-iOS-Secret-MasterTests.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -146,8 +148,9 @@
 				09FAB3431F7C30D70057EF1B /* Structs.swift */,
 				09FAB3121F7C276C0057EF1B /* AppDelegate.swift */,
 				09FAB3191F7C276C0057EF1B /* iOS_Secret_Master.xcdatamodeld */,
-				BFB28B7D1F7E96FE00B65768 /* shoot1.wav */,
-				BFB28B7E1F7E9A5D00B65768 /* torpedo.mp3 */,
+				BFB28B821F7EA27C00B65768 /* shoot1.wav */,
+				BFB28B811F7EA16400B65768 /* torpedo.mp3 */,
+				BFB28B801F7EA13700B65768 /* Sounds */,
 			);
 			path = "iOS-Secret-Master";
 			sourceTree = "<group>";
@@ -181,6 +184,15 @@
 				3B33D586A2BABB585D0C6EA8 /* Pods-iOS-Secret-MasterUITests.release.xcconfig */,
 			);
 			name = Pods;
+			sourceTree = "<group>";
+		};
+		BFB28B801F7EA13700B65768 /* Sounds */ = {
+			isa = PBXGroup;
+			children = (
+				BFB28B7D1F7E96FE00B65768 /* shoot1.wav */,
+				BFB28B7E1F7E9A5D00B65768 /* torpedo.mp3 */,
+			);
+			path = Sounds;
 			sourceTree = "<group>";
 		};
 		CDB8F40FFA82279EB5EED40E /* Frameworks */ = {
