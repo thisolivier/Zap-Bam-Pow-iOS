@@ -60,8 +60,25 @@ class IdentifyYourselfViewController: UIViewController, ARSCNViewDelegate {
     /* Manual entry fallback */
     /*************************/
     @IBAction func manualEntryPressed(_ sender: UIButton) {
-        // Lance help here
+        let alert = UIAlertController(title: "New Name",
+                                      message: "Add a new player name",
+                                      preferredStyle: .alert)
+        
+        alert.addTextField(configurationHandler: nil)
+        
+        let saveAction = UIAlertAction(title: "Save", style: .default)
+        {
+            _ in
+            let textField = alert.textFields![0]
+            nameLabelOutput.text = textField
+        }
+        
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+        alert.addAction(saveAction)
+        alert.addAction(cancelAction)
+        present(alert, animated: true, completion: nil)
     }
+    
     
     /************************/
     /* The QR Functionality */
