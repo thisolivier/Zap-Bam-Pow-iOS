@@ -72,6 +72,10 @@ class PlayViewController: UIViewController, ARSKViewDelegate {
             print("this person was shot: \(result)")
             self.someoneGotShotHandler(result: result[0])
         }
+        socket.on("idiotShot") {result, ack in
+            print("suicide shot: \(result)")
+            self.someoneGotShotHandler(result: result[0], suicide: true)
+        }
     }
     
     // When we trigger a shot on our device
@@ -83,8 +87,12 @@ class PlayViewController: UIViewController, ARSKViewDelegate {
     }
     
     // Handler for when someone gets shot
-    func someoneGotShotHandler(result:Any){
-        casualtyLabel.text = "\(result) was just shot, ouch!!"
+    func someoneGotShotHandler(result:Any, suicide:Bool = false){
+        if suicide{
+            casualtyLabel.text = "\(result) shot themselves 💩"
+        } else {
+            casualtyLabel.text = "\(result) was just shot, ouch!"
+        }
     }
     
     /************************/
@@ -242,8 +250,8 @@ class PlayViewController: UIViewController, ARSKViewDelegate {
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-        
-        // Pause the view's session
+        // Shut down the tracking
         sceneView.session.pause()
+        qRTimer.invalidate()
     }
 }
