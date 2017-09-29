@@ -33,7 +33,7 @@ class IdentifyYourselfViewController: UIViewController, ARSCNViewDelegate {
         resetButtonOutlet.isHidden = true
         cameraARView.delegate = self
         setupVisionRequest()
-        scheduledTimerWithTimeInterval()
+        //scheduledTimerWithTimeInterval()
         
         // See if we have a name already
         if let delegate = delegate {
