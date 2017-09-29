@@ -256,15 +256,20 @@
                                     <action selector="shootPressed:" destination="nIO-8A-Ebd" eventType="touchUpInside" id="KXa-qJ-3aF"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8mC-n9-otg">
-                                <rect key="frame" x="150" y="187" width="74" height="30"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="null" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cOl-nH-V5n">
+                                <rect key="frame" x="156" y="168" width="27" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Game over"/>
-                            </button>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <viewLayoutGuide key="safeArea" id="1Hd-QG-cD1"/>
                     </view>
+                    <connections>
+                        <outlet property="target" destination="cOl-nH-V5n" id="FtC-7D-pkj"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5Qe-9w-5VB" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

@@ -12,6 +12,7 @@ import SocketIO
 class FakeGameViewController: UIViewController{
     let socket = SocketIOClient(socketURL: URL(string: "http://192.168.1.86:8000")!, config: [.log(false), .forcePolling(true)])
     
+    @IBOutlet weak var target: UILabel!
     var currentPlayerName:String?
     var allPlayers:[String]?
     var count:Int = 1
@@ -19,7 +20,15 @@ class FakeGameViewController: UIViewController{
     override func viewDidLoad() {
         super.viewDidLoad()
         print("We're in the fake game")
+        eventHandlers()
         socket.connect()
+    }
+    
+    func eventHandlers() {
+        socket.on("target") {result, ack in
+            print("this person was shot: \(result)")
+            self.updateThings(result: result[0])
+        }
     }
     
     @IBAction func shootPressed(_ sender: UIButton) {
@@ -30,6 +39,8 @@ class FakeGameViewController: UIViewController{
         socket.emit("shotsFired", data)
     }
 
-    
+    func updateThings(result:Any){
+        target.text = "\(result) was just shot, ouch!!"
+    }
     
 }
