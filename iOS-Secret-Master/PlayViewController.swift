@@ -187,7 +187,7 @@ class PlayViewController: UIViewController, ARSKViewDelegate {
         print("Screen tapped")
         self.detectQR()
         if let victim = qRInTarget {
-            flashHit(backgroundColor: colours.UIGray, start: 0, end: 10)
+            flashHit(backgroundColor: colours.UIGray, start: 0, end: 6)
             print("\(victim.name) hit!")
             sendShotToServer(victim: victim.name)
         }
@@ -196,15 +196,21 @@ class PlayViewController: UIViewController, ARSKViewDelegate {
     // Flashes a 'hit' indicator near top of screen when QR code is hit
     func flashHit(backgroundColor: UIColor, start: Int, end: Int) {
         if let victim = qRInTarget {
-            hitIndicator.text = "\(victim.name) HIT"
-            UIView.animate(withDuration: 2, animations: {
+            UIView.animate(withDuration: 0.2, animations: {
                 self.hitIndicator.layer.backgroundColor = backgroundColor.cgColor
             }, completion: { success in
                 if start + 1 <= end {
                     self.flashHit(backgroundColor: backgroundColor == self.colours.UIRed ? self.colours.UIGray : self.colours.UIRed, start: start + 1, end: end)
                 }
-                self.hitIndicator.text = "TARGET HIT"
             })
+//            UIView.transition(with: label, duration: 3, options: .transitionCrossDissolve, animations: { [weak self] in
+//                self?.hitIndicator.text = (rand() % 2 == 0) ? "\(victim.name) HIT" : "TARGET HIT"
+//                }, completion: nil)
+//            UIView.animate(withDuration: 3, animations: {
+//                self.hitIndicator.text = "\(victim.name) HIT"
+//            }, completion: {
+//                self.hitIndicator.text = "TARGET HIT"
+//            })
         }
     }
     /********************************/
