@@ -56,12 +56,11 @@ class SetupGameViewController: UIViewController, UITableViewDelegate, UITableVie
     
     func eventHandlers() {
         socket.on("beginGame") {result, ack in
-            print("Coming from the game creator \(result)")
+            print("Coming from the game creator")
             self.performSegue(withIdentifier: "toFakeGameSegue", sender: nil)
         }
         socket.on("gameOver") {result, ark in
-            print("Coming from the fake game prepare for curr user: \(result)")
-            
+            print("Coming from the fake game prepare for curr user")
             self.gameDestination!.dismiss(animated: true, completion: {
                 self.performSegue(withIdentifier: "toGameOverSegue", sender: result)
             })
