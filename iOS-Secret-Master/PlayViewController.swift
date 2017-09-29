@@ -20,6 +20,7 @@ class PlayViewController: UIViewController, ARSKViewDelegate {
     @IBOutlet weak var hitIndicator: UILabel!
     @IBOutlet weak var targetingLabel: UILabel!
     @IBOutlet weak var casualtyLabel: UILabel!
+    @IBOutlet weak var timeLowLabel: UILabel!
     
     let colours = Colours()
     
@@ -47,6 +48,7 @@ class PlayViewController: UIViewController, ARSKViewDelegate {
         scene.scaleMode = .resizeFill
         scene.anchorPoint = CGPoint(x: 0.5, y: 0.5)
         sceneView.presentScene(scene)
+        
         
         // Set the view's delegate
         sceneView.delegate = self
@@ -78,6 +80,11 @@ class PlayViewController: UIViewController, ARSKViewDelegate {
             print("suicide shot: \(result)")
             self.someoneGotShotHandler(result: result[0], suicide: true)
         }
+        socket.on("timeWarning") {result, ack in
+            print("time warning-: \(result) seconds left")
+            self.timeWarning(result: result[0] as! Int)
+            print(result)
+        }
     }
     
     // When we trigger a shot on our device
@@ -96,6 +103,24 @@ class PlayViewController: UIViewController, ARSKViewDelegate {
             casualtyLabel.text = "\(result) was just shot, ouch!"
         }
     }
+    // Handler for time low warning
+    func timeWarning(result: Int) {
+        if result == 60 {
+            timeLowLabel.text = "TIME LOW"
+//            UIView.transition(with: self.timeLowLabel, duration: 3, options: .transitionCrossDissolve, animations: { [weak self] in
+//                self?.timeLowLabel.alpha = (arc4random() % 2 == 0) ? 1.0 : 0.0
+//                }, completion: nil)
+            UIView.animate(withDuration: 5, animations: {
+                        self.timeLowLabel.alpha = 1.0
+            }, completion: {_ in
+                self.timeLowLabel.alpha = 0.0})
+            
+        } else {
+            timeLowLabel.text = "TIME CRITICAL"
+            UIView.animate(withDuration: 3, animations: {self.timeLowLabel.alpha = 1.0}, completion: nil)
+        }
+    }
+    
     
     /************************/
     /* The QR Functionality */
@@ -187,7 +212,7 @@ class PlayViewController: UIViewController, ARSKViewDelegate {
         print("Screen tapped")
         self.detectQR()
         if let victim = qRInTarget {
-            flashHit(backgroundColor: colours.UIGray, start: 0, end: 10)
+            flashHit(backgroundColor: colours.UIGray, start: 0, end: 6)
             print("\(victim.name) hit!")
             sendShotToServer(victim: victim.name)
         }
@@ -196,15 +221,21 @@ class PlayViewController: UIViewController, ARSKViewDelegate {
     // Flashes a 'hit' indicator near top of screen when QR code is hit
     func flashHit(backgroundColor: UIColor, start: Int, end: Int) {
         if let victim = qRInTarget {
-            hitIndicator.text = "\(victim.name) HIT"
-            UIView.animate(withDuration: 2, animations: {
+            UIView.animate(withDuration: 0.1, animations: {
                 self.hitIndicator.layer.backgroundColor = backgroundColor.cgColor
             }, completion: { success in
                 if start + 1 <= end {
                     self.flashHit(backgroundColor: backgroundColor == self.colours.UIRed ? self.colours.UIGray : self.colours.UIRed, start: start + 1, end: end)
                 }
-                self.hitIndicator.text = "TARGET HIT"
             })
+            UIView.transition(with: self.hitIndicator, duration: 2, options: .transitionCrossDissolve, animations: { [weak self] in
+                self?.hitIndicator.text = (arc4random() % 2 == 0) ? "\(victim.name) HIT" : "TARGET HIT"
+                }, completion: nil)
+//            UIView.animate(withDuration: 3, animations: {
+//                self.hitIndicator.text = "\(victim.name) HIT"
+//            }, completion: {
+//                self.hitIndicator.text = "TARGET HIT"
+//            })
         }
     }
     /********************************/
@@ -233,6 +264,10 @@ class PlayViewController: UIViewController, ARSKViewDelegate {
             }
         }
     }
+    /********************************/
+    /* Time Low Notifications       */
+    /********************************/
+    
     
     
     /********************************/
@@ -251,7 +286,7 @@ class PlayViewController: UIViewController, ARSKViewDelegate {
         targetingLabel.backgroundColor = colours.UIGray
         hitIndicator.backgroundColor = UIColor.clear
         hitIndicator.layer.backgroundColor = colours.UIGray.cgColor
-        
+        timeLowLabel.alpha = 0.0
     }
     
     override func viewWillDisappear(_ animated: Bool) {
