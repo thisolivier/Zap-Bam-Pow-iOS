@@ -16,7 +16,7 @@ class GameOverController: UIViewController{
     var game:Any?
     override func viewDidLoad() {
         super.viewDidLoad()
-        fetchDataFrom("http://localhost:8000/all")
+        fetchDataFrom("http://192.168.1.86:8000/all")
         socket.connect()
     }
     
