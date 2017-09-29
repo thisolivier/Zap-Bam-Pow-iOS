@@ -187,7 +187,7 @@ class PlayViewController: UIViewController, ARSKViewDelegate {
         print("Screen tapped")
         self.detectQR()
         if let victim = qRInTarget {
-            flashHit(backgroundColor: colours.UIGray, start: 0, end: 16)
+            flashHit(backgroundColor: colours.UIGray, start: 0, end: 10)
             print("\(victim.name) hit!")
             sendShotToServer(victim: victim.name)
         }
@@ -197,8 +197,8 @@ class PlayViewController: UIViewController, ARSKViewDelegate {
     func flashHit(backgroundColor: UIColor, start: Int, end: Int) {
         if let victim = qRInTarget {
             hitIndicator.text = "\(victim.name) HIT"
-            UIView.animate(withDuration: 12, animations: {
-                self.hitIndicator.backgroundColor = backgroundColor
+            UIView.animate(withDuration: 2, animations: {
+                self.hitIndicator.layer.backgroundColor = backgroundColor.cgColor
             }, completion: { success in
                 if start + 1 <= end {
                     self.flashHit(backgroundColor: backgroundColor == self.colours.UIRed ? self.colours.UIGray : self.colours.UIRed, start: start + 1, end: end)
@@ -250,7 +250,7 @@ class PlayViewController: UIViewController, ARSKViewDelegate {
         sceneView.session.run(configuration)
         targetingLabel.backgroundColor = colours.UIGray
         hitIndicator.backgroundColor = UIColor.clear
-//        hitIndicator.layer.backgroundColor = colours.UIGray
+        hitIndicator.layer.backgroundColor = colours.UIGray.cgColor
         
     }
     
