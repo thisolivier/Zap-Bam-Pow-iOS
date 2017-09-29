@@ -12,7 +12,7 @@ import SocketIO
 
 
 class GameOverController: UIViewController{
-    let socket = SocketIOClient(socketURL: URL(string: "http://localhost:8000")!, config: [.log(false), .forcePolling(true)])
+    let socket = SocketIOClient(socketURL: URL(string: "http://192.168.1.86:8000")!, config: [.log(false), .forcePolling(true)])
     var game:Any?
     override func viewDidLoad() {
         super.viewDidLoad()

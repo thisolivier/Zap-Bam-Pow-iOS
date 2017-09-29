@@ -10,7 +10,7 @@ import UIKit
 import SocketIO
 
 class FakeGameViewController: UIViewController{
-    let socket = SocketIOClient(socketURL: URL(string: "http://localhost:8000")!, config: [.log(false), .forcePolling(true)])
+    let socket = SocketIOClient(socketURL: URL(string: "http://192.168.1.86:8000")!, config: [.log(false), .forcePolling(true)])
     
     var currentPlayerName:String?
     var allPlayers:[String]?
