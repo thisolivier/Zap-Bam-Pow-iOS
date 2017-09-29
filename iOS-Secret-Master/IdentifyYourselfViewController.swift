@@ -60,8 +60,30 @@ class IdentifyYourselfViewController: UIViewController, ARSCNViewDelegate {
     /* Manual entry fallback */
     /*************************/
     @IBAction func manualEntryPressed(_ sender: UIButton) {
-        // Lance help here
+        let alert = UIAlertController(title: "New Name",
+                                      message: "Add a new player name",
+                                      preferredStyle: .alert)
+        
+        alert.addTextField(configurationHandler: nil)
+        
+        let saveAction = UIAlertAction(title: "Save", style: .default)
+        {
+            _ in
+            let textField = alert.textFields![0]
+            self.nameLabelOutput.text = textField.text
+            // These functions should be moved to a helper function, since are repeated in QR code detection success
+            self.cameraARView.session.pause()
+            self.qRTimer.invalidate()
+            self.resetButtonOutlet.isHidden = false
+            self.nameLabelOutput.isHidden = false
+        }
+        
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+        alert.addAction(saveAction)
+        alert.addAction(cancelAction)
+        present(alert, animated: true, completion: nil)
     }
+    
     
     /************************/
     /* The QR Functionality */
