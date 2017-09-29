@@ -26,7 +26,6 @@ class GameViewController: UIViewController{
         identifyButtonOutlet.backgroundColor = colours.UIOrange
         joinGameButtonOutlet.backgroundColor = colours.UITeal
         createGameButtonOutlet.backgroundColor = colours.UIDarkTeal
-        self.setupSockets()
     }
     
     /******************/

@@ -13,7 +13,7 @@ class SetupGameViewController: UIViewController, UITableViewDelegate, UITableVie
     var delegate:GameViewController?
     var endGameDestination: GameOverController?
     var players:[String]?
-    let socket = SocketIOClient(socketURL: URL(string: "http://localhost:8000")!, config: [.log(false), .forcePolling(true)])
+    let socket = SocketIOClient(socketURL: URL(string: "http://192.168.1.86:8000")!, config: [.log(false), .forcePolling(true)])
     var gameDestination:FakeGameViewController?
     
     @IBOutlet weak var isAdminLabel: UILabel!
@@ -28,7 +28,7 @@ class SetupGameViewController: UIViewController, UITableViewDelegate, UITableVie
             players = ["Olivier", "Lantz", "Wura"]
         }
         eventHandlers()
-        getAdmin("http://localhost:8000/admin")
+        getAdmin("http://192.168.1.86:8000/admin")
         socket.connect()
     }
     
