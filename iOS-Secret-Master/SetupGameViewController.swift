@@ -12,7 +12,11 @@ import SocketIO
 class SetupGameViewController: UIViewController, UITableViewDelegate, UITableViewDataSource{
     var delegate:GameViewController?
     var players:[String]?
+<<<<<<< HEAD
     let socket = SocketIOClient(socketURL: URL(string: "http://192.168.1.231:8000")!, config: [.log(false), .forcePolling(true)])
+=======
+    let socket = SocketIOClient(socketURL: URL(string: "http://\(GameServer.address):8000")!, config: [.log(false), .forcePolling(true)])
+>>>>>>> finalsprint-uxGameplayWaypoint
     var gameDestination: PlayViewController?
     var endGameDestination: GameOverController?
     var adminName: String?
@@ -30,7 +34,11 @@ class SetupGameViewController: UIViewController, UITableViewDelegate, UITableVie
             players = ["Please wait for next game"]
         }
         eventHandlers()
+<<<<<<< HEAD
         getAdmin("http://192.168.1.231:8000/admin")
+=======
+        getAdmin("http://\(GameServer.address):8000/admin")
+>>>>>>> finalsprint-uxGameplayWaypoint
         socket.connect()
     }
     
@@ -69,7 +77,7 @@ class SetupGameViewController: UIViewController, UITableViewDelegate, UITableVie
             self.performSegue(withIdentifier: "startGameSegue", sender: nil)
         }
         socket.on("gameOver") {result, ark in
-            print("Coming from the game prepare for curr user: \(result)")
+            print("Coming from the game setup controller for curr user: \(result)")
             
             self.gameDestination!.dismiss(animated: true, completion: {
                 self.performSegue(withIdentifier: "toGameOverSegue", sender: result)
@@ -91,11 +99,8 @@ class SetupGameViewController: UIViewController, UITableViewDelegate, UITableVie
         }
         if segue.identifier == "toGameOverSegue" {
             endGameDestination = segue.destination as? GameOverController
-            endGameDestination?.game = sender!
+            endGameDestination?.gameData = sender
         }
-    }
-    func gameData(destination: GameOverController?, game: Any)  {
-        destination?.game = game
     }
     
     /********************/

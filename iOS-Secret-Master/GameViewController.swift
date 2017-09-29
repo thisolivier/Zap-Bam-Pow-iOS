@@ -9,7 +9,11 @@
 import UIKit
 import SocketIO
 class GameViewController: UIViewController{
+<<<<<<< HEAD
     let socket = SocketIOClient(socketURL: URL(string: "http://192.168.1.231:8000")!, config: [.log(false), .forcePolling(true)])
+=======
+    let socket = SocketIOClient(socketURL: URL(string: "http://\(GameServer.address):8000")!, config: [.log(false), .forcePolling(true)])
+>>>>>>> finalsprint-uxGameplayWaypoint
     
     /******************/
     /* Initialisation */
@@ -21,6 +25,7 @@ class GameViewController: UIViewController{
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        print(GameServer.address)
         socket.connect()
         identifyButtonOutlet.backgroundColor = colours.UIOrange
         joinGameButtonOutlet.backgroundColor = colours.UITeal

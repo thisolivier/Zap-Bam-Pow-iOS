@@ -12,11 +12,20 @@ import SocketIO
 
 
 class GameOverController: UIViewController{
+<<<<<<< HEAD
     let socket = SocketIOClient(socketURL: URL(string: "http://192.168.1.231:8000")!, config: [.log(false), .forcePolling(true)])
     var game:Any?
     override func viewDidLoad() {
         super.viewDidLoad()
         fetchDataFrom("http://192.168.1.231:8000/all")
+=======
+    let socket = SocketIOClient(socketURL: URL(string: "http://\(GameServer.address):8000")!, config: [.log(false), .forcePolling(true)])
+    var gameData:Any?
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        fetchDataFrom("http://\(GameServer.address):8000/all")
+>>>>>>> finalsprint-uxGameplayWaypoint
         socket.connect()
     }
     
@@ -29,7 +38,7 @@ class GameOverController: UIViewController{
                 do {
                     let jsonResponse = try JSONSerialization.jsonObject(with: data!, options: JSONSerialization.ReadingOptions.mutableContainers)
                     if let jsonResults = jsonResponse as? NSDictionary {
-                        print(jsonResults)
+                        self.processResultsFromDict(jsonResults)
                     }
                 } catch {
                     print(error)
@@ -39,7 +48,16 @@ class GameOverController: UIViewController{
         }
     }
     
-    
+    func processResultsFromDict(_ originalDictionary:NSDictionary){
+        print("Processing results form game")
+        print(originalDictionary)
+        for item in originalDictionary{
+            if let item = item.value as? NSDictionary {
+                print ("Printing items")
+                print (item)
+            }
+        }
+    }
     
     
 }

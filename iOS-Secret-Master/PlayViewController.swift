@@ -37,7 +37,11 @@ class PlayViewController: UIViewController, ARSKViewDelegate {
     var allPlayers:[String]?
     
     // Setup our socket
+<<<<<<< HEAD
     let socket = SocketIOClient(socketURL: URL(string: "http://192.168.1.231:8000")!, config: [.log(false), .forcePolling(true)])
+=======
+    let socket = SocketIOClient(socketURL: URL(string: "http://\(GameServer.address):8000")!, config: [.log(false), .forcePolling(true)])
+>>>>>>> finalsprint-uxGameplayWaypoint
     
     override func viewDidLoad() {
         super.viewDidLoad()
