@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		092F42021F7C55200054067E /* SetupGameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 092F42011F7C55200054067E /* SetupGameViewController.swift */; };
+		099D56721F7EA8F90089F37B /* ScoresTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 099D56711F7EA8F90089F37B /* ScoresTableViewController.swift */; };
 		09C44F5F1F7C4A5900CB3CA2 /* IdentifyYourselfViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09C44F5E1F7C4A5900CB3CA2 /* IdentifyYourselfViewController.swift */; };
 		09FAB3131F7C276C0057EF1B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09FAB3121F7C276C0057EF1B /* AppDelegate.swift */; };
 		09FAB3151F7C276C0057EF1B /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09FAB3141F7C276C0057EF1B /* HomeViewController.swift */; };
@@ -20,7 +21,6 @@
 		09FAB3441F7C30D70057EF1B /* Structs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09FAB3431F7C30D70057EF1B /* Structs.swift */; };
 		09FAB3461F7C46390057EF1B /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09FAB3451F7C46390057EF1B /* GameViewController.swift */; };
 		0CF1765CEE80AFFBF1A498AC /* Pods_iOS_Secret_MasterUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9E3C72FE96EC7F59DF8064EE /* Pods_iOS_Secret_MasterUITests.framework */; };
-		531B6D891F7C89C80053F751 /* FakeGameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 531B6D881F7C89C80053F751 /* FakeGameViewController.swift */; };
 		539787891F7D22F10018E2EE /* GameOverController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 539787881F7D22F10018E2EE /* GameOverController.swift */; };
 		853F3C9BE00FB43340473432 /* Pods_iOS_Secret_MasterTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AD093BC90B301DDCA6B6BBC9 /* Pods_iOS_Secret_MasterTests.framework */; };
 		BF3128511F7D7CFF00B626EC /* PlayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF3128501F7D7CFF00B626EC /* PlayViewController.swift */; };
@@ -48,6 +48,7 @@
 /* Begin PBXFileReference section */
 		09030251AA0E58FB6A85571E /* Pods_iOS_Secret_Master.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_iOS_Secret_Master.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		092F42011F7C55200054067E /* SetupGameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetupGameViewController.swift; sourceTree = "<group>"; };
+		099D56711F7EA8F90089F37B /* ScoresTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScoresTableViewController.swift; sourceTree = "<group>"; };
 		09C44F5E1F7C4A5900CB3CA2 /* IdentifyYourselfViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IdentifyYourselfViewController.swift; sourceTree = "<group>"; };
 		09FAB30F1F7C276C0057EF1B /* iOS-Secret-Master.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "iOS-Secret-Master.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		09FAB3121F7C276C0057EF1B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -68,13 +69,14 @@
 		258C85F945CE41D97D712AEA /* Pods-iOS-Secret-Master.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iOS-Secret-Master.debug.xcconfig"; path = "Pods/Target Support Files/Pods-iOS-Secret-Master/Pods-iOS-Secret-Master.debug.xcconfig"; sourceTree = "<group>"; };
 		3B33D586A2BABB585D0C6EA8 /* Pods-iOS-Secret-MasterUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iOS-Secret-MasterUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-iOS-Secret-MasterUITests/Pods-iOS-Secret-MasterUITests.release.xcconfig"; sourceTree = "<group>"; };
 		493B8C7E4A90B4DD3326F797 /* Pods-iOS-Secret-MasterUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iOS-Secret-MasterUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-iOS-Secret-MasterUITests/Pods-iOS-Secret-MasterUITests.debug.xcconfig"; sourceTree = "<group>"; };
-		531B6D881F7C89C80053F751 /* FakeGameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FakeGameViewController.swift; sourceTree = "<group>"; };
 		539787881F7D22F10018E2EE /* GameOverController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameOverController.swift; sourceTree = "<group>"; };
 		5CC79DBA66FA7701B744D201 /* Pods-iOS-Secret-MasterTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iOS-Secret-MasterTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-iOS-Secret-MasterTests/Pods-iOS-Secret-MasterTests.debug.xcconfig"; sourceTree = "<group>"; };
 		9E3C72FE96EC7F59DF8064EE /* Pods_iOS_Secret_MasterUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_iOS_Secret_MasterUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		AD093BC90B301DDCA6B6BBC9 /* Pods_iOS_Secret_MasterTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_iOS_Secret_MasterTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		BF3128501F7D7CFF00B626EC /* PlayViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayViewController.swift; sourceTree = "<group>"; };
 		BF3128521F7D820700B626EC /* PlayScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayScene.swift; sourceTree = "<group>"; };
+		BFB28B7D1F7E96FE00B65768 /* shoot1.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = shoot1.wav; sourceTree = "<group>"; };
+		BFB28B7E1F7E9A5D00B65768 /* torpedo.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = torpedo.mp3; sourceTree = "<group>"; };
 		E5B33C0DBF08D7AE78F4D925 /* Pods-iOS-Secret-Master.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iOS-Secret-Master.release.xcconfig"; path = "Pods/Target Support Files/Pods-iOS-Secret-Master/Pods-iOS-Secret-Master.release.xcconfig"; sourceTree = "<group>"; };
 		EF5671C028BB0301B4DE653D /* Pods-iOS-Secret-MasterTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iOS-Secret-MasterTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-iOS-Secret-MasterTests/Pods-iOS-Secret-MasterTests.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -135,9 +137,9 @@
 				09FAB3141F7C276C0057EF1B /* HomeViewController.swift */,
 				09FAB3451F7C46390057EF1B /* GameViewController.swift */,
 				09C44F5E1F7C4A5900CB3CA2 /* IdentifyYourselfViewController.swift */,
-				092F42011F7C55200054067E /* SetupGameViewController.swift */,
-				531B6D881F7C89C80053F751 /* FakeGameViewController.swift */,
 				539787881F7D22F10018E2EE /* GameOverController.swift */,
+				092F42011F7C55200054067E /* SetupGameViewController.swift */,
+				099D56711F7EA8F90089F37B /* ScoresTableViewController.swift */,
 				BF3128501F7D7CFF00B626EC /* PlayViewController.swift */,
 				BF3128521F7D820700B626EC /* PlayScene.swift */,
 				09FAB31C1F7C276C0057EF1B /* Assets.xcassets */,
@@ -147,6 +149,8 @@
 				09FAB3431F7C30D70057EF1B /* Structs.swift */,
 				09FAB3121F7C276C0057EF1B /* AppDelegate.swift */,
 				09FAB3191F7C276C0057EF1B /* iOS_Secret_Master.xcdatamodeld */,
+				BFB28B7D1F7E96FE00B65768 /* shoot1.wav */,
+				BFB28B7E1F7E9A5D00B65768 /* torpedo.mp3 */,
 			);
 			path = "iOS-Secret-Master";
 			sourceTree = "<group>";
@@ -481,9 +485,9 @@
 				092F42021F7C55200054067E /* SetupGameViewController.swift in Sources */,
 				539787891F7D22F10018E2EE /* GameOverController.swift in Sources */,
 				09FAB31B1F7C276C0057EF1B /* iOS_Secret_Master.xcdatamodeld in Sources */,
+				099D56721F7EA8F90089F37B /* ScoresTableViewController.swift in Sources */,
 				09FAB3151F7C276C0057EF1B /* HomeViewController.swift in Sources */,
 				09FAB3131F7C276C0057EF1B /* AppDelegate.swift in Sources */,
-				531B6D891F7C89C80053F751 /* FakeGameViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

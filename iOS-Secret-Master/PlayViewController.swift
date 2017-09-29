@@ -11,6 +11,7 @@ import SpriteKit
 import ARKit
 import Vision
 import SocketIO
+import AVFoundation
 
 class PlayViewController: UIViewController, ARSKViewDelegate {
     /******************/
@@ -20,6 +21,10 @@ class PlayViewController: UIViewController, ARSKViewDelegate {
     @IBOutlet weak var hitIndicator: UILabel!
     @IBOutlet weak var targetingLabel: UILabel!
     @IBOutlet weak var casualtyLabel: UILabel!
+    @IBOutlet weak var timeLowLabel: UILabel!
+    
+    var player: AVAudioPlayer!
+    let colours = Colours()
     
     // Variable for storing the barcode request
     var qRRequest:VNDetectBarcodesRequest?
@@ -35,7 +40,7 @@ class PlayViewController: UIViewController, ARSKViewDelegate {
     var allPlayers:[String]?
     
     // Setup our socket
-    let socket = SocketIOClient(socketURL: URL(string: "http://192.168.1.86:8000")!, config: [.log(false), .forcePolling(true)])
+    let socket = SocketIOClient(socketURL: URL(string: "http://\(GameServer.address):8000")!, config: [.log(false), .forcePolling(true)])
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -45,6 +50,7 @@ class PlayViewController: UIViewController, ARSKViewDelegate {
         scene.scaleMode = .resizeFill
         scene.anchorPoint = CGPoint(x: 0.5, y: 0.5)
         sceneView.presentScene(scene)
+        
         
         // Set the view's delegate
         sceneView.delegate = self
@@ -76,6 +82,11 @@ class PlayViewController: UIViewController, ARSKViewDelegate {
             print("suicide shot: \(result)")
             self.someoneGotShotHandler(result: result[0], suicide: true)
         }
+        socket.on("timeWarning") {result, ack in
+            print("time warning-: \(result) seconds left")
+            self.timeWarning(result: result[0] as! Int)
+            print(result)
+        }
     }
     
     // When we trigger a shot on our device
@@ -94,6 +105,24 @@ class PlayViewController: UIViewController, ARSKViewDelegate {
             casualtyLabel.text = "\(result) was just shot, ouch!"
         }
     }
+    /********************************/
+    /* Time Low Notifications       */
+    /********************************/
+    // Handler for time low warning
+    func timeWarning(result: Int) {
+        if result == 60 {
+            timeLowLabel.text = "TIME LOW"
+            UIView.animate(withDuration: 5, animations: {
+                        self.timeLowLabel.alpha = 1.0
+            }, completion: {_ in
+                self.timeLowLabel.alpha = 0.0})
+            
+        } else {
+            timeLowLabel.text = "TIME CRITICAL"
+            UIView.animate(withDuration: 3, animations: {self.timeLowLabel.alpha = 1.0}, completion: nil)
+        }
+    }
+    
     
     /************************/
     /* The QR Functionality */
@@ -158,20 +187,20 @@ class PlayViewController: UIViewController, ARSKViewDelegate {
     func isTargeted() {
         if qRCenterArray.count == 0 {
             qRInTarget = nil
-            targetingLabel.isHidden = true
+            targetingLabel.backgroundColor = colours.UIGray
         } else {
             for item in qRCenterArray {
                 if item.coordinate.x > 0.45
                     && item.coordinate.x < 0.55
                     && item.coordinate.y > 0.42
                     && item.coordinate.y < 0.57 {
-                    targetingLabel.isHidden = false
+                    targetingLabel.backgroundColor = colours.UITeal
                     qRInTarget = item
                     print("Target Lock on \(item.name)")
                 }
             }
             if qRInTarget == nil{
-                targetingLabel.isHidden = true
+                targetingLabel.backgroundColor = colours.UIGray
             }
         }
     }
@@ -180,27 +209,37 @@ class PlayViewController: UIViewController, ARSKViewDelegate {
     /* Firing   */
     /************/
     
-    // Detects screen tap and initiates a fresh QR detection and targetting
+    // Detects screen tap and initiates a fresh QR detection and targeting
     @IBAction func didTapScreen(_ sender: UITapGestureRecognizer) {
         print("Screen tapped")
         self.detectQR()
+        self.playSoundEffect(ofType: .torpedo)
         if let victim = qRInTarget {
-            flashHit(alpha: 0.0, start: 0, end: 6)
+            flashHit(backgroundColor: colours.UIGray, start: 0, end: 6)
             print("\(victim.name) hit!")
             sendShotToServer(victim: victim.name)
         }
     }
    
     // Flashes a 'hit' indicator near top of screen when QR code is hit
-    func flashHit(alpha: CGFloat, start: Int, end: Int) {
-        hitIndicator.text = "HIT"
-        UIView.animate(withDuration: 0.1, animations: {
-            self.hitIndicator.alpha = alpha
-        }, completion: { success in
-            if start + 1 <= end {
-                self.flashHit(alpha: alpha == 1.0 ? 0.0 : 1.0, start: start + 1, end: end)
-            }
-        })
+    func flashHit(backgroundColor: UIColor, start: Int, end: Int) {
+        if let victim = qRInTarget {
+            UIView.animate(withDuration: 0.1, animations: {
+                self.hitIndicator.layer.backgroundColor = backgroundColor.cgColor
+            }, completion: { success in
+                if start + 1 <= end {
+                    self.flashHit(backgroundColor: backgroundColor == self.colours.UIRed ? self.colours.UIGray : self.colours.UIRed, start: start + 1, end: end)
+                }
+            })
+            UIView.transition(with: self.hitIndicator, duration: 2, options: .transitionCrossDissolve, animations: { [weak self] in
+                self?.hitIndicator.text = (arc4random() % 2 == 0) ? "\(victim.name) HIT" : "TARGET HIT"
+                }, completion: nil)
+//            UIView.animate(withDuration: 3, animations: {
+//                self.hitIndicator.text = "\(victim.name) HIT"
+//            }, completion: {
+//                self.hitIndicator.text = "TARGET HIT"
+//            })
+        }
     }
     /********************************/
     /* Swipe down to exit   */
@@ -228,6 +267,26 @@ class PlayViewController: UIViewController, ARSKViewDelegate {
             }
         }
     }
+    // Sound Effects
+    
+    func playSoundEffect(ofType effect: SoundEffect) {
+        
+        // Async to avoid substantial cost to graphics processing (may result in sound effect delay however)
+        DispatchQueue.main.async {
+            do
+            {
+                if let effectURL = Bundle.main.url(forResource: effect.rawValue, withExtension: "mp3") {
+                    
+                    self.player = try AVAudioPlayer(contentsOf: effectURL)
+                    self.player.play()
+                    
+                }
+            }
+            catch let error as NSError {
+                print(error.description)
+            }
+        }
+    }
     
     
     /********************************/
@@ -243,9 +302,10 @@ class PlayViewController: UIViewController, ARSKViewDelegate {
         
         // Run the view's session
         sceneView.session.run(configuration)
-        targetingLabel.isHidden = true
-        hitIndicator.alpha = 0.0
-        
+        targetingLabel.backgroundColor = colours.UIGray
+        hitIndicator.backgroundColor = UIColor.clear
+        hitIndicator.layer.backgroundColor = colours.UIGray.cgColor
+        timeLowLabel.alpha = 0.0
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -253,5 +313,11 @@ class PlayViewController: UIViewController, ARSKViewDelegate {
         // Shut down the tracking
         sceneView.session.pause()
         qRTimer.invalidate()
+    }
+    enum SoundEffect: String {
+        case explosion = "explosion"
+        case collision = "collision"
+        case torpedo = "torpedo"
+        case shoot1 = "shoot1"
     }
 }
