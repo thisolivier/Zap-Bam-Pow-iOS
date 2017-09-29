@@ -7,8 +7,10 @@
 //
 
 import UIKit
-
+import SocketIO
 class GameViewController: UIViewController{
+    let socket = SocketIOClient(socketURL: URL(string: "http://192.168.1.86:8000")!, config: [.log(false), .forcePolling(true)])
+    
     /******************/
     /* Initialisation */
     /******************/
@@ -20,10 +22,10 @@ class GameViewController: UIViewController{
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        socket.connect()
         identifyButtonOutlet.backgroundColor = colours.UIOrange
         joinGameButtonOutlet.backgroundColor = colours.UITeal
         createGameButtonOutlet.backgroundColor = colours.UIDarkTeal
-        self.setupSockets()
     }
     
     /******************/
@@ -68,15 +70,15 @@ class GameViewController: UIViewController{
     /* Sockets */
     /***********/
     
-    func setupSockets(){
-        
-    }
-    
     func getReadyToJoin(destination: SetupGameViewController){
-        
-    }
-    
-    func getReadyToCreate(destination: SetupGameViewController){
+        if !self.myName.isEmpty {
+            
+        }
+        socket.emit("joinChat", self.myName)
+        socket.on("allUsers") {result, ack in
+            let formatted = result as! NSArray
+            self.updatePlayers(destination: destination, players: formatted[0] as! NSArray)
+        }
         
     }
     
@@ -87,6 +89,7 @@ class GameViewController: UIViewController{
     /*****************************************/
     
     func setNewName(_ newName:String){
+        
         if newName != "Enter Name" {
             self.myName = newName
             let alertController = UIAlertController(title: "Name Saved", message: newName, preferredStyle: .alert)
@@ -98,6 +101,10 @@ class GameViewController: UIViewController{
                 print("presented")
             }
         }
+    }
+    func updatePlayers(destination: SetupGameViewController, players: NSArray)  {
+        destination.players = players as! [String]
+        destination.currentPlayersTableView.reloadData()
     }
     
 }
