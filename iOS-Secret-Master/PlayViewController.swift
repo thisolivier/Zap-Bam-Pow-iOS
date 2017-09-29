@@ -24,7 +24,7 @@ class PlayViewController: UIViewController, ARSKViewDelegate {
     // Creates a new timer object
     var qRTimer = Timer()
     // Variable for storing the center of tracked QR codes
-    var qRCenter: CGPoint?
+    var qRCenter: [CGPoint]?
     // Variable to report whether tracked QR code is in the target area
     var qRInTarget = false
     
@@ -73,7 +73,7 @@ class PlayViewController: UIViewController, ARSKViewDelegate {
                     rect = rect.applying(CGAffineTransform(scaleX: 1, y: -1))
                     rect = rect.applying(CGAffineTransform(translationX: 0, y: 1))
                     let center = CGPoint(x: rect.midX, y: rect.midY)
-                    self.qRCenter = center
+                    self.qRCenter.append(center)
                     print ("Payload: \(barcode.payloadStringValue!) at \(center)")
                     // Checks whether the tracked QR code is lined up in the crosshairs
                 }
