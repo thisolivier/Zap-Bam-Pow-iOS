@@ -28,6 +28,7 @@ class HomeViewController: UIViewController {
         performSegue(withIdentifier: "toScoresSegue", sender: nil)
     }
     @IBAction func playButtonPressed(_ sender: UIButton) {
+        print ("Attempting to play")
         performSegue(withIdentifier: "toPlaySegue", sender: nil)
     }
     

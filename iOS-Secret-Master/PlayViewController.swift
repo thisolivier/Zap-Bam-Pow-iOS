@@ -32,7 +32,7 @@ class PlayViewController: UIViewController, ARSKViewDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        print("--We're in the play view controller")
         let scene = PlayScene(size: sceneView.bounds.size)
         scene.scaleMode = .resizeFill
         scene.anchorPoint = CGPoint(x: 0.5, y: 0.5)
@@ -45,12 +45,6 @@ class PlayViewController: UIViewController, ARSKViewDelegate {
         sceneView.showsFPS = true
         sceneView.showsNodeCount = true
         
-        // Load the SKScene from 'Arena.sks'
-        // Review to see is this can be removed
-        if let scene = SKScene(fileNamed: "Arena") {
-            sceneView.presentScene(scene)
-        }
-        
         // Setup vision request and start detection loop
         setupVisionRequest()
         scheduledTimerWithTimeInterval()
@@ -62,6 +56,7 @@ class PlayViewController: UIViewController, ARSKViewDelegate {
     
     // Setup for a barcode detector object, which will scan for barcodes, and process the results
     func setupVisionRequest(){
+        print("--Setting up vision request")
         qRRequest = VNDetectBarcodesRequest(completionHandler: {
             (request, error) in
             // Loop through the found results
@@ -98,11 +93,13 @@ class PlayViewController: UIViewController, ARSKViewDelegate {
     
     // Starts a timer with a callback of the QR detection function
     func scheduledTimerWithTimeInterval(){
+        print("--Starting timer")
         qRTimer = Timer.scheduledTimer(timeInterval: 0.66, target: self, selector: #selector(self.detectQR), userInfo: nil, repeats: true)
     }
     
     // Resets current data
     func resetQRData(){
+        print("--Resetting stuff")
         qRCenterArray = []
         qRInTarget = false
     }
@@ -146,13 +143,10 @@ class PlayViewController: UIViewController, ARSKViewDelegate {
    
     // Flashes a 'hit' indicator near top of screen when QR code is hit
     func flashHit(alpha: CGFloat, start: Int, end: Int) {
-        
         hitIndicator.text = "HIT"
-        
         UIView.animate(withDuration: 0.1, animations: {
             self.hitIndicator.alpha = alpha
         }, completion: { success in
-            
             if start + 1 <= end {
                 self.flashHit(alpha: alpha == 1.0 ? 0.0 : 1.0, start: start + 1, end: end)
             }
