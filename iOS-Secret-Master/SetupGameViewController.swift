@@ -16,11 +16,12 @@ class SetupGameViewController: UIViewController, UITableViewDelegate, UITableVie
     var gameDestination: PlayViewController?
     var endGameDestination: GameOverController?
     var adminName: String?
-    var dummyTime = 70000
+    var gameTimeLimit = 70000
     
     @IBOutlet weak var yourNameLabel: UILabel!
     @IBOutlet weak var currentPlayersTableView: UITableView!
     @IBOutlet weak var startGameButtonOutlet: UIButton!
+    @IBOutlet weak var gameTimeField: UITextField!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -32,6 +33,8 @@ class SetupGameViewController: UIViewController, UITableViewDelegate, UITableVie
         eventHandlers()
         getAdmin("http://\(GameServer.address):8000/admin")
         socket.connect()
+        
+        setupTapToHideKeyboard()
     }
     
     func getAdmin(_ inputURL: String) {
@@ -69,18 +72,18 @@ class SetupGameViewController: UIViewController, UITableViewDelegate, UITableVie
             self.performSegue(withIdentifier: "startGameSegue", sender: nil)
         }
         socket.on("gameOver") {result, ark in
-            print("Coming from the game setup controller for curr user: \(result)")
-            
             self.gameDestination!.dismiss(animated: true, completion: {
-                self.performSegue(withIdentifier: "toGameOverSegue", sender: result)
+                self.performSegue(withIdentifier: "toGameOverSegue", sender: nil)
             })
         }
     }
     
-    
     @IBAction func startGameButtonPressed(_ sender: Any) {
         if delegate?.myName == adminName! {
-            socket.emit("startGame", self.dummyTime)
+            if let newTime = Int(gameTimeField.text!) {
+                self.gameTimeLimit = newTime * 1000
+            }
+            socket.emit("startGame", self.gameTimeLimit)
         }
     }
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -91,8 +94,20 @@ class SetupGameViewController: UIViewController, UITableViewDelegate, UITableVie
         }
         if segue.identifier == "toGameOverSegue" {
             endGameDestination = segue.destination as? GameOverController
-            endGameDestination?.gameData = sender
         }
+    }
+    
+    /*************************/
+    /* Hides keyboard on tap */
+    /*************************/
+    func setupTapToHideKeyboard(){
+        let tapRecognizer = UITapGestureRecognizer()
+        tapRecognizer.addTarget(self, action: #selector(self.didTapView))
+        self.view.addGestureRecognizer(tapRecognizer)
+    }
+    
+    @objc func didTapView(){
+        self.view.endEditing(true)
     }
     
     /********************/

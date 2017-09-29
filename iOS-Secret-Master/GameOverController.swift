@@ -13,7 +13,6 @@ import SocketIO
 
 class GameOverController: UIViewController{
     let socket = SocketIOClient(socketURL: URL(string: "http://\(GameServer.address):8000")!, config: [.log(false), .forcePolling(true)])
-    var gameData:Any?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -42,11 +41,17 @@ class GameOverController: UIViewController{
     
     func processResultsFromDict(_ originalDictionary:NSDictionary){
         print("Processing results form game")
-        print(originalDictionary)
-        for item in originalDictionary{
-            if let item = item.value as? NSDictionary {
-                print ("Printing items")
-                print (item)
+        let arrayOfPlayers = originalDictionary["data"] as? [NSDictionary]
+        for player in arrayOfPlayers!{
+            print ("-------------------------")
+            print ("Working on current player")
+            let myName = player["name"] as! String
+            print (myName)
+            let targets = player["targets"] as! NSDictionary
+            for victim in targets {
+                let yourName = victim.key as! String
+                let yourWounds = victim.value as! Int
+                print("Individual victim \(yourName) was hit \(yourWounds) times")
             }
         }
     }
