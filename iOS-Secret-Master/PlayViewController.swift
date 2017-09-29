@@ -24,9 +24,9 @@ class PlayViewController: UIViewController, ARSKViewDelegate {
     // Creates a new timer object
     var qRTimer = Timer()
     // Variable for storing the center of tracked QR codes
-    var qRCenterArray = [CGPoint]()
+    var qRCenterArray = [GameTarget]()
     // Variable to report whether tracked QR code is in the target area
-    var qRInTarget = false
+    var qRInTarget:GameTarget? = nil
     
     var player: AVAudioPlayer!
     
@@ -63,16 +63,18 @@ class PlayViewController: UIViewController, ARSKViewDelegate {
             for result in request.results! {
                 // Cast the result to a barcode-observation
                 if let barcode = result as? VNBarcodeObservation {
-                    // Get the bounding box for the bar code and find the center
-                    var rect = barcode.boundingBox
-                    rect = rect.applying(CGAffineTransform(scaleX: 1, y: -1))
-                    rect = rect.applying(CGAffineTransform(translationX: 0, y: 1))
-                    let center = CGPoint(x: rect.midX, y: rect.midY)
-                    self.qRCenterArray.append(center)
-                    print ("Payload: \(barcode.payloadStringValue!) at \(center)")
-                    // Checks whether the tracked QR code is lined up in the crosshairs
+                    if let payload = barcode.payloadStringValue{
+                        // Find the center
+                        var rect = barcode.boundingBox
+                        rect = rect.applying(CGAffineTransform(scaleX: 1, y: -1))
+                        rect = rect.applying(CGAffineTransform(translationX: 0, y: 1))
+                        let center = CGPoint(x: rect.midX, y: rect.midY)
+                        // Store the data
+                        self.qRCenterArray.append(GameTarget.init(coordinate: center, name: payload))
+                    }
                 }
             }
+            // Checks that detected QR codes are in crosshairs
             self.isTargeted()
         })
     }
@@ -99,9 +101,8 @@ class PlayViewController: UIViewController, ARSKViewDelegate {
     
     // Resets current data
     func resetQRData(){
-        print("--Resetting stuff")
         qRCenterArray = []
-        qRInTarget = false
+        qRInTarget = nil
     }
     
     /********************************/
@@ -111,18 +112,21 @@ class PlayViewController: UIViewController, ARSKViewDelegate {
     // Defines a square region in center of screen and detects whether QR code is located within it
     func isTargeted() {
         if qRCenterArray.count == 0 {
-            qRInTarget = false
+            qRInTarget = nil
             targetingLabel.isHidden = true
         } else {
-            for coordinate in qRCenterArray {
-                if coordinate.x > 0.45
-                    && coordinate.x < 0.55
-                    && coordinate.y > 0.42
-                    && coordinate.y < 0.57 {
+            for item in qRCenterArray {
+                if item.coordinate.x > 0.45
+                    && item.coordinate.x < 0.55
+                    && item.coordinate.y > 0.42
+                    && item.coordinate.y < 0.57 {
                     targetingLabel.isHidden = false
-                    qRInTarget = true
-                    print("Target Lock")
+                    qRInTarget = item
+                    print("Target Lock on \(item.name)")
                 }
+            }
+            if qRInTarget == nil{
+                targetingLabel.isHidden = true
             }
         }
     }
@@ -135,9 +139,9 @@ class PlayViewController: UIViewController, ARSKViewDelegate {
     @IBAction func didTapScreen(_ sender: UITapGestureRecognizer) {
         print("Screen tapped")
         self.detectQR()
-        if qRInTarget {
+        if let victim = qRInTarget {
             flashHit(alpha: 0.0, start: 0, end: 6)
-            print("Hit!")
+            print("\(victim.name) hit!")
         }
     }
    
