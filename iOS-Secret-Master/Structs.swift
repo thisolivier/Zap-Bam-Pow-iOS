@@ -24,21 +24,16 @@ struct GameTarget {
     var name: String
 }
 
+struct GamePlayers {
+    static var players = ["Players"]
+}
+
 struct GameServer {
     static var address = "192.168.1.231"
 }
 
 struct GameResults {
-    var playersAndHits: [PlayerRelations]
-    var playersAndLosses: [PlayerRelations]
+    var playersAndHits: [String:[String:Int]] = [:]
+    var playersAndLosses: [String:[String:Int]] = [:]
 }
-struct PlayerRelations{
-    var name:String
-    var tallys:[PlayerTally]
-}
-struct PlayerTally {
-    var name:String
-    var count:Int
-}
-
 

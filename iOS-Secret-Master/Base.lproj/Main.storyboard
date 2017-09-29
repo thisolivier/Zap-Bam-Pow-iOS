@@ -145,19 +145,19 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="551"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="1VL-zZ-naw">
-                                <rect key="frame" x="20" y="100.5" width="335" height="380.5"/>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" allowsSelection="NO" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="1VL-zZ-naw">
+                                <rect key="frame" x="6" y="132" width="363" height="349"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="playerCell" textLabel="cDQ-Vx-YVa" style="IBUITableViewCellStyleDefault" id="4ek-mu-wYC">
-                                        <rect key="frame" x="0.0" y="28" width="335" height="44"/>
+                                    <tableViewCell clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationWidth="0.0" reuseIdentifier="playerCell" textLabel="cDQ-Vx-YVa" style="IBUITableViewCellStyleDefault" id="4ek-mu-wYC">
+                                        <rect key="frame" x="0.0" y="28" width="363" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="4ek-mu-wYC" id="Fef-jG-PH3">
-                                            <rect key="frame" x="0.0" y="0.0" width="335" height="43.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="363" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="cDQ-Vx-YVa">
-                                                    <rect key="frame" x="15" y="0.0" width="305" height="43.5"/>
+                                                    <rect key="frame" x="15" y="0.0" width="333" height="43.5"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
@@ -183,21 +183,27 @@
                                     <action selector="startGameButtonPressed:" destination="1uw-Kj-eZp" eventType="touchUpInside" id="fnJ-U8-tBY"/>
                                 </connections>
                             </button>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="WUy-p0-Sx9">
-                                <rect key="frame" x="20" y="20" width="335" height="70.5"/>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="WUy-p0-Sx9">
+                                <rect key="frame" x="20" y="20" width="335" height="102"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Welcome Player" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KbA-0M-L5q">
-                                        <rect key="frame" x="0.0" y="0.0" width="335" height="20.5"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="335" height="26"/>
+                                        <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="20"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter Game Time (seconds)" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="dr5-Fu-stc">
-                                        <rect key="frame" x="0.0" y="40.5" width="335" height="30"/>
+                                        <rect key="frame" x="0.0" y="36" width="335" height="30"/>
                                         <nil key="textColor"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits" keyboardType="numberPad" returnKeyType="continue" enablesReturnKeyAutomatically="YES"/>
                                     </textField>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Current Players in Game" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TZU-PE-Bf2">
+                                        <rect key="frame" x="0.0" y="76" width="335" height="26"/>
+                                        <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="20"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
                                 </subviews>
                             </stackView>
                         </subviews>
@@ -205,9 +211,9 @@
                         <constraints>
                             <constraint firstItem="1VL-zZ-naw" firstAttribute="top" secondItem="WUy-p0-Sx9" secondAttribute="bottom" constant="10" id="3j8-wS-Wl9"/>
                             <constraint firstItem="5ze-H7-3KS" firstAttribute="trailing" secondItem="yGk-Jm-vvF" secondAttribute="trailing" id="98O-k3-gAb"/>
-                            <constraint firstItem="1VL-zZ-naw" firstAttribute="leading" secondItem="5ze-H7-3KS" secondAttribute="leading" constant="20" id="BTH-r0-5rE"/>
+                            <constraint firstItem="1VL-zZ-naw" firstAttribute="leading" secondItem="5ze-H7-3KS" secondAttribute="leading" constant="6" id="BTH-r0-5rE"/>
                             <constraint firstItem="yGk-Jm-vvF" firstAttribute="top" secondItem="1VL-zZ-naw" secondAttribute="bottom" id="GsM-2L-mSE"/>
-                            <constraint firstItem="5ze-H7-3KS" firstAttribute="trailing" secondItem="1VL-zZ-naw" secondAttribute="trailing" constant="20" id="HqJ-69-4hx"/>
+                            <constraint firstItem="5ze-H7-3KS" firstAttribute="trailing" secondItem="1VL-zZ-naw" secondAttribute="trailing" constant="6" id="HqJ-69-4hx"/>
                             <constraint firstItem="5ze-H7-3KS" firstAttribute="trailing" secondItem="WUy-p0-Sx9" secondAttribute="trailing" constant="20" id="UPq-tp-Urw"/>
                             <constraint firstItem="yGk-Jm-vvF" firstAttribute="leading" secondItem="5ze-H7-3KS" secondAttribute="leading" id="ePH-Ms-DTq"/>
                             <constraint firstItem="yGk-Jm-vvF" firstAttribute="bottom" secondItem="5ze-H7-3KS" secondAttribute="bottom" id="ikt-OH-Mv2"/>
