@@ -1,5 +1,5 @@
 # Lazer Tag
-This is a version of lazer tag played on iOS
+This is a version of lazer tag played on iOS, it uses the [companion node app](https://github.com/Zainab-Kalief/iOS-Secret-Server) by the wonderful [Zainab Kalief](https://github.com/Zainab-Kalief) to facilitate multiplayer functioning. Credit to [Lantz](https://github.com/betalantz) as half of the Swift team.
 
 ## Requirements for playing
 - Your phone must be an iPhone 6 or higher (iPhone SE is good), so that it can support apple's augmented reality API
